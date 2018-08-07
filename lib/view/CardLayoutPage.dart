@@ -21,6 +21,7 @@ class _CardLayoutPageState extends State<CardLayoutPage> {
               Image.asset('assets/neko1_600x400.jpg'),
               _titleArea(),
               _buttonArea(),
+              _buildTextArea()
             ],
           ),
         ));
@@ -64,7 +65,7 @@ class _CardLayoutPageState extends State<CardLayoutPage> {
 
   Widget _buttonArea() {
     return Container(
-      margin: const EdgeInsets.fromLTRB(16.0, 0.0, 16.0, 16.0),
+      margin: const EdgeInsets.fromLTRB(16.0, 0.0, 16.0, 0.0),
       child: Row(
         crossAxisAlignment: CrossAxisAlignment.start,
         mainAxisAlignment: MainAxisAlignment.spaceEvenly,
@@ -95,6 +96,17 @@ class _CardLayoutPageState extends State<CardLayoutPage> {
           ),
         )
       ],
+    );
+  }
+
+  Widget _buildTextArea() {
+    return Expanded(
+      child: Container( 
+        margin: const EdgeInsets.all(16.0),
+        child: Text(
+          "Lake Oeschinen lies at the foot of the Blüemlisalp in the Bernese Alps. Situated 1,578 meters above sea level, it is one of the larger Alpine Lakes. A gondola ride from Kandersteg, followed by a half-hour walk through pastures and pine forest, leads you to the lake, which warms to 20 degrees Celsius in the summer. Activities enjoyed here include rowing, and riding the summer toboggan run."
+        ),
+      ),
     );
   }
 }
