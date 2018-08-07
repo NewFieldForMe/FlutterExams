@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_exams/presenter/ExampleListPagePresenter.dart';
 
 void main() => runApp(new MyApp());
 
@@ -10,14 +11,17 @@ class MyApp extends StatelessWidget {
       theme: new ThemeData(
         primarySwatch: Colors.blue,
       ),
-      home: new ExampleListPage(title: 'Flutter Examples Home'),
+      home: new ExampleListPage(
+          title: 'Flutter Examples Home',
+          presenter: ExampleListPagePresenter()),
     );
   }
 }
 
 class ExampleListPage extends StatefulWidget {
-  ExampleListPage({Key key, this.title}) : super(key: key);
   final String title;
+  final ExampleListPagePresenter presenter;
+  ExampleListPage({Key key, this.title, this.presenter}) : super(key: key);
 
   @override
   _ExampleListPageState createState() => new _ExampleListPageState();
@@ -32,7 +36,7 @@ class _ExampleListPageState extends State<ExampleListPage> {
       ),
       body: _buildListView(),
       floatingActionButton: new FloatingActionButton(
-        onPressed: () { },
+        onPressed: () {},
         tooltip: 'Increment',
         child: new Icon(Icons.add),
       ), // This trailing comma makes auto-formatting nicer for build methods.
@@ -41,17 +45,16 @@ class _ExampleListPageState extends State<ExampleListPage> {
 
   Widget _buildListView() {
     return ListView.builder(
-        padding: const EdgeInsets.all(16.0),
-        itemBuilder: (BuildContext context, int index) { 
-          return _buildRow(index);
-        },
-        itemCount: 5,
+      padding: const EdgeInsets.all(16.0),
+      itemBuilder: (BuildContext context, int index) {
+        return _buildRow(index);
+      },
+      itemCount: widget.presenter.examples.length,
     );
   }
 
   Widget _buildRow(int index) {
-    return Card(child: ListTile(
-      title: Text('hoge')
-    ));
+    return Card(
+        child: ListTile(title: Text(widget.presenter.examples[index].title)));
   }
 }
