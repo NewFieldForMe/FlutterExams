@@ -19,7 +19,8 @@ class _CardLayoutPageState extends State<CardLayoutPage> {
             crossAxisAlignment: CrossAxisAlignment.center,
             children: <Widget>[
               Image.asset('assets/neko1_600x400.jpg'),
-              _titleArea()
+              _titleArea(),
+              _buttonArea(),
             ],
           ),
         ));
@@ -59,5 +60,41 @@ class _CardLayoutPageState extends State<CardLayoutPage> {
             Text('41'),
           ],
         ));
+  }
+
+  Widget _buttonArea() {
+    return Container(
+      margin: const EdgeInsets.fromLTRB(16.0, 0.0, 16.0, 16.0),
+      child: Row(
+        crossAxisAlignment: CrossAxisAlignment.start,
+        mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+        children: <Widget>[
+          _buildButtonColumn(Icons.call, "CALL"),
+          _buildButtonColumn(Icons.near_me, "ROUTE"),
+          _buildButtonColumn(Icons.share, "SHARE")
+        ],
+      )
+    );
+  }
+
+  Widget _buildButtonColumn(IconData icon, String label) {
+    return Column(
+      mainAxisSize: MainAxisSize.min,
+      mainAxisAlignment: MainAxisAlignment.center,
+      children: <Widget>[
+        Icon(icon, color: Theme.of(context).primaryColor),
+        Container(
+          margin: const EdgeInsets.only(top: 8.0),
+          child: Text(
+            label,
+            style: TextStyle(
+              fontSize: 12.0,
+              fontWeight: FontWeight.w400,
+              color: Theme.of(context).primaryColor
+            ),
+          ),
+        )
+      ],
+    );
   }
 }
