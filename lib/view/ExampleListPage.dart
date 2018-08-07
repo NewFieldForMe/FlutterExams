@@ -39,17 +39,12 @@ class _ExampleListPageState extends State<ExampleListPage> {
 
   Widget _buildRow(int index) {
     return Card(
-      child: ListTile(
-        title: Text(widget.presenter.examples[index].title),
-        onTap: () {
-          Navigator.push(
-            context, 
-            MaterialPageRoute(
-              builder: (context) => CardLayoutPage()
-            )
-          );
-        },
-      )
-    );
+        child: ListTile(
+      title: Text(widget.presenter.examples[index].title),
+      onTap: () {
+        Navigator.push(
+            context, MaterialPageRoute(builder: (context) => CardLayoutPage()));
+      },
+    ));
   }
 }
