@@ -30,20 +30,28 @@ class _ExampleListPageState extends State<ExampleListPage> {
       appBar: new AppBar(
         title: new Text(widget.title),
       ),
-      body: ListView.builder(
-        padding: const EdgeInsets.all(16.0),
-        itemBuilder: (BuildContext context, int index) { 
-          return ListTile(
-            title: Text('hoge')
-          );
-        },
-        itemCount: 5,
-      ),
+      body: _buildListView(),
       floatingActionButton: new FloatingActionButton(
         onPressed: () { },
         tooltip: 'Increment',
         child: new Icon(Icons.add),
       ), // This trailing comma makes auto-formatting nicer for build methods.
     );
+  }
+
+  Widget _buildListView() {
+    return ListView.builder(
+        padding: const EdgeInsets.all(16.0),
+        itemBuilder: (BuildContext context, int index) { 
+          return _buildRow(index);
+        },
+        itemCount: 5,
+    );
+  }
+
+  Widget _buildRow(int index) {
+    return Card(child: ListTile(
+      title: Text('hoge')
+    ));
   }
 }
