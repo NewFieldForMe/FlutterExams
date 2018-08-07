@@ -102,7 +102,7 @@ class _CardLayoutPageState extends State<CardLayoutPage> {
       child: Container(
         margin: const EdgeInsets.all(16.0),
         child: Text('''
-ねこはとてもかわいい。ねこはめちゃくちゃかわいい。ひるまはずっと寝ています。ゆうがたぐらいに起きてきます。よるは遊びまわっています。おやつをもらう時だけすり寄ってきます。だきあげるとおこられます。お風呂場へ連れて行くとこの世の終わりのようななきかたをします。私が寝ていると上に乗ってきます。時々、うなされます。
+The Neko is very cute. The Neko is super cute. Neko has been sleeping during the day time. She gets up in the evening. she is playing around at night. She nestles up to me when I get a snack. She gets angly when I pick herup. She cries out like end of the world when I take her to the bathroom. When I am asleep she goes on. Therefore, sometimes, I can be apologized.
           '''),
       ),
     );
