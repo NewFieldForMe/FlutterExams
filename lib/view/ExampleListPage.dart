@@ -1,5 +1,7 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_exams/enums.dart';
 import 'package:flutter_exams/view/CardLayoutPage.dart';
+import 'package:flutter_exams/view/ScrollViewPage.dart';
 import 'package:flutter_exams/presenter/ExampleListPagePresenter.dart';
 
 class ExampleListPage extends StatefulWidget {
@@ -42,8 +44,19 @@ class _ExampleListPageState extends State<ExampleListPage> {
         child: ListTile(
       title: Text(widget.presenter.examples[index].title),
       onTap: () {
-        Navigator.push(
-            context, MaterialPageRoute(builder: (context) => CardLayoutPage()));
+        Navigator.push(context, MaterialPageRoute(builder: (context) {
+          print(widget.presenter.examples[index].exampleType);
+          switch (widget.presenter.examples[index].exampleType) {
+            case ExampleEnum.cardLayout:
+              return CardLayoutPage();
+              break;
+            case ExampleEnum.scrollView:
+              return ScrollViewPage();
+              break;
+            default:
+              return CardLayoutPage();
+          }
+        }));
       },
     ));
   }

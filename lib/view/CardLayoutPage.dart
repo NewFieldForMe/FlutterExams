@@ -65,17 +65,16 @@ class _CardLayoutPageState extends State<CardLayoutPage> {
 
   Widget _buttonArea() {
     return Container(
-      margin: const EdgeInsets.fromLTRB(16.0, 0.0, 16.0, 0.0),
-      child: Row(
-        crossAxisAlignment: CrossAxisAlignment.start,
-        mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-        children: <Widget>[
-          _buildButtonColumn(Icons.call, "CALL"),
-          _buildButtonColumn(Icons.near_me, "ROUTE"),
-          _buildButtonColumn(Icons.share, "SHARE")
-        ],
-      )
-    );
+        margin: const EdgeInsets.fromLTRB(16.0, 0.0, 16.0, 0.0),
+        child: Row(
+          crossAxisAlignment: CrossAxisAlignment.start,
+          mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+          children: <Widget>[
+            _buildButtonColumn(Icons.call, "CALL"),
+            _buildButtonColumn(Icons.near_me, "ROUTE"),
+            _buildButtonColumn(Icons.share, "SHARE")
+          ],
+        ));
   }
 
   Widget _buildButtonColumn(IconData icon, String label) {
@@ -89,10 +88,9 @@ class _CardLayoutPageState extends State<CardLayoutPage> {
           child: Text(
             label,
             style: TextStyle(
-              fontSize: 12.0,
-              fontWeight: FontWeight.w400,
-              color: Theme.of(context).primaryColor
-            ),
+                fontSize: 12.0,
+                fontWeight: FontWeight.w400,
+                color: Theme.of(context).primaryColor),
           ),
         )
       ],
@@ -101,13 +99,11 @@ class _CardLayoutPageState extends State<CardLayoutPage> {
 
   Widget _buildTextArea() {
     return Expanded(
-      child: Container( 
+      child: Container(
         margin: const EdgeInsets.all(16.0),
-        child: Text(
-          '''
+        child: Text('''
 ねこはとてもかわいい。ねこはめちゃくちゃかわいい。ひるまはずっと寝ています。ゆうがたぐらいに起きてきます。よるは遊びまわっています。おやつをもらう時だけすり寄ってきます。だきあげるとおこられます。お風呂場へ連れて行くとこの世の終わりのようななきかたをします。私が寝ていると上に乗ってきます。時々、うなされます。
-          '''
-        ),
+          '''),
       ),
     );
   }

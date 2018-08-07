@@ -1,1 +1,8 @@
-enum ExampleEnum { cardLayout, collectionViewLayout, map, topTab, bottomTab }
+enum ExampleEnum {
+  cardLayout,
+  scrollView,
+  collectionViewLayout,
+  map,
+  topTab,
+  bottomTab
+}

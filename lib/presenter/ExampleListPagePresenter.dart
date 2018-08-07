@@ -6,6 +6,7 @@ class ExampleListPagePresenter {
   ExampleListPagePresenter() {
     this.examples = <Example>[
       Example(title: 'Card Layout', exampleType: ExampleEnum.cardLayout),
+      Example(title: 'Scroll View Layout', exampleType: ExampleEnum.scrollView),
       Example(
           title: 'Collection View Layout',
           exampleType: ExampleEnum.collectionViewLayout),
