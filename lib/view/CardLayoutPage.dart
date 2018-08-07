@@ -39,7 +39,7 @@ class _CardLayoutPageState extends State<CardLayoutPage> {
                   Container(
                     margin: const EdgeInsets.all(4.0),
                     child: Text(
-                      "Mi-San is So cute.",
+                      "Neko is So cute.",
                       style: TextStyle(
                           fontWeight: FontWeight.bold, fontSize: 16.0),
                     ),
@@ -104,7 +104,9 @@ class _CardLayoutPageState extends State<CardLayoutPage> {
       child: Container( 
         margin: const EdgeInsets.all(16.0),
         child: Text(
-          "Lake Oeschinen lies at the foot of the Blüemlisalp in the Bernese Alps. Situated 1,578 meters above sea level, it is one of the larger Alpine Lakes. A gondola ride from Kandersteg, followed by a half-hour walk through pastures and pine forest, leads you to the lake, which warms to 20 degrees Celsius in the summer. Activities enjoyed here include rowing, and riding the summer toboggan run."
+          '''
+ねこはとてもかわいい。ねこはめちゃくちゃかわいい。ひるまはずっと寝ています。ゆうがたぐらいに起きてきます。よるは遊びまわっています。おやつをもらう時だけすり寄ってきます。だきあげるとおこられます。お風呂場へ連れて行くとこの世の終わりのようななきかたをします。私が寝ていると上に乗ってきます。時々、うなされます。
+          '''
         ),
       ),
     );
