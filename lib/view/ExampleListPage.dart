@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_exams/view/CardLayoutPage.dart';
 import 'package:flutter_exams/presenter/ExampleListPagePresenter.dart';
 
 class ExampleListPage extends StatefulWidget {
@@ -44,30 +45,11 @@ class _ExampleListPageState extends State<ExampleListPage> {
           Navigator.push(
             context, 
             MaterialPageRoute(
-              builder: (context) => SecondScreen()
+              builder: (context) => CardLayoutPage()
             )
           );
         },
       )
-    );
-  }
-}
-
-class SecondScreen extends StatelessWidget {
-  @override
-  Widget build(BuildContext context) {
-    return Scaffold(
-      appBar: AppBar(
-        title: Text("Second Screen"),
-      ),
-      body: Center(
-        child: RaisedButton(
-          onPressed: () {
-            Navigator.pop(context);
-          },
-          child: Text('Go back!'),
-        ),
-      ),
     );
   }
 }
