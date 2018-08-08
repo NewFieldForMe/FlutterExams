@@ -30,37 +30,38 @@ class _CardLayoutPageState extends State<CardLayoutPage> {
 
   Widget _titleArea() {
     return Container(
-        margin: EdgeInsets.all(16.0),
-        child: Row(
-          children: <Widget>[
-            Expanded(
-              child: Column(
-                crossAxisAlignment: CrossAxisAlignment.start,
-                children: <Widget>[
-                  Container(
-                    margin: const EdgeInsets.only(bottom: 4.0),
-                    child: Text(
-                      "Neko is So cute.",
-                      style: TextStyle(
-                          fontWeight: FontWeight.bold, fontSize: 16.0),
-                    ),
+      margin: EdgeInsets.all(16.0),
+      child: Row(
+        children: <Widget>[
+          Expanded(
+            child: Column(
+              crossAxisAlignment: CrossAxisAlignment.start,
+              children: <Widget>[
+                Container(
+                  margin: const EdgeInsets.only(bottom: 4.0),
+                  child: Text(
+                    "Neko is So cute.",
+                    style: TextStyle(
+                        fontWeight: FontWeight.bold, fontSize: 16.0),
                   ),
-                  Container(
-                    child: Text(
-                      "Osaka, Japan",
-                      style: TextStyle(fontSize: 12.0, color: Colors.grey),
-                    ),
+                ),
+                Container(
+                  child: Text(
+                    "Osaka, Japan",
+                    style: TextStyle(fontSize: 12.0, color: Colors.grey),
                   ),
-                ],
-              ),
+                ),
+              ],
             ),
-            Icon(
-              Icons.star,
-              color: Colors.red,
-            ),
-            Text('41'),
-          ],
-        ));
+          ),
+          Icon(
+            Icons.star,
+            color: Colors.red,
+          ),
+          Text('41'),
+        ],
+      )
+    );
   }
 
   Widget _buttonArea() {
