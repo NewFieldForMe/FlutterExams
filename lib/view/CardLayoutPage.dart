@@ -21,7 +21,7 @@ class _CardLayoutPageState extends State<CardLayoutPage> {
               Image.asset('assets/neko1_600x400.jpg'),
               _titleArea(),
               _buttonArea(),
-              _buildTextArea()
+              _buildDescriptionArea()
             ],
           ),
         ));
@@ -37,7 +37,7 @@ class _CardLayoutPageState extends State<CardLayoutPage> {
                 crossAxisAlignment: CrossAxisAlignment.start,
                 children: <Widget>[
                   Container(
-                    margin: const EdgeInsets.all(4.0),
+                    margin: const EdgeInsets.only(bottom: 4.0),
                     child: Text(
                       "Neko is So cute.",
                       style: TextStyle(
@@ -45,7 +45,6 @@ class _CardLayoutPageState extends State<CardLayoutPage> {
                     ),
                   ),
                   Container(
-                    margin: const EdgeInsets.all(4.0),
                     child: Text(
                       "Osaka, Japan",
                       style: TextStyle(fontSize: 12.0, color: Colors.grey),
@@ -56,7 +55,7 @@ class _CardLayoutPageState extends State<CardLayoutPage> {
             ),
             Icon(
               Icons.star,
-              color: Colors.red[500],
+              color: Colors.red,
             ),
             Text('41'),
           ],
@@ -65,7 +64,7 @@ class _CardLayoutPageState extends State<CardLayoutPage> {
 
   Widget _buttonArea() {
     return Container(
-        margin: const EdgeInsets.fromLTRB(16.0, 0.0, 16.0, 0.0),
+        margin: const EdgeInsets.fromLTRB(16.0, 0.0, 16.0, 16.0),
         child: Row(
           crossAxisAlignment: CrossAxisAlignment.start,
           mainAxisAlignment: MainAxisAlignment.spaceEvenly,
@@ -78,11 +77,12 @@ class _CardLayoutPageState extends State<CardLayoutPage> {
   }
 
   Widget _buildButtonColumn(IconData icon, String label) {
+    final color = Theme.of(context).primaryColor;
     return Column(
       mainAxisSize: MainAxisSize.min,
       mainAxisAlignment: MainAxisAlignment.center,
       children: <Widget>[
-        Icon(icon, color: Theme.of(context).primaryColor),
+        Icon(icon, color: color),
         Container(
           margin: const EdgeInsets.only(top: 8.0),
           child: Text(
@@ -90,17 +90,17 @@ class _CardLayoutPageState extends State<CardLayoutPage> {
             style: TextStyle(
                 fontSize: 12.0,
                 fontWeight: FontWeight.w400,
-                color: Theme.of(context).primaryColor),
+                color: color),
           ),
         )
       ],
     );
   }
 
-  Widget _buildTextArea() {
+  Widget _buildDescriptionArea() {
     return Expanded(
       child: Container(
-        margin: const EdgeInsets.all(16.0),
+        margin: const EdgeInsets.fromLTRB(16.0, 0.0, 16.0, 16.0),
         child: Text('''
 The Neko is very cute. The Neko is super cute. Neko has been sleeping during the day time. She gets up in the evening. she is playing around at night. She nestles up to me when I get a snack. She gets angly when I pick herup. She cries out like end of the world when I take her to the bathroom. When I am asleep she goes on. Therefore, sometimes, I can be apologized.
           '''),
