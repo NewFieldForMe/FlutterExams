@@ -9,22 +9,23 @@ class _CardLayoutPageState extends State<CardLayoutPage> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-        appBar: AppBar(
-          title: Text("Card Layout"),
+      appBar: AppBar(
+        title: Text("Card Layout"),
+      ),
+      body: Card(
+        elevation: 4.0,
+        margin: const EdgeInsets.all(16.0),
+        child: Column(
+          crossAxisAlignment: CrossAxisAlignment.center,
+          children: <Widget>[
+            Image.asset('assets/neko1_600x400.jpg'),
+            _titleArea(),
+            _buttonArea(),
+            _descriptionArea()
+          ],
         ),
-        body: Card(
-          elevation: 4.0,
-          margin: const EdgeInsets.all(16.0),
-          child: Column(
-            crossAxisAlignment: CrossAxisAlignment.center,
-            children: <Widget>[
-              Image.asset('assets/neko1_600x400.jpg'),
-              _titleArea(),
-              _buttonArea(),
-              _buildDescriptionArea()
-            ],
-          ),
-        ));
+      )
+    );
   }
 
   Widget _titleArea() {
@@ -97,7 +98,7 @@ class _CardLayoutPageState extends State<CardLayoutPage> {
     );
   }
 
-  Widget _buildDescriptionArea() {
+  Widget _descriptionArea() {
     return Expanded(
       child: Container(
         margin: const EdgeInsets.fromLTRB(16.0, 0.0, 16.0, 16.0),
