@@ -7,7 +7,7 @@ import Flutter
     _ application: UIApplication,
     didFinishLaunchingWithOptions launchOptions: [UIApplicationLaunchOptionsKey: Any]?
   ) -> Bool {
-    // GeneratedPluginRegistrant.register(with: self)
+    GeneratedPluginRegistrant.register(with: self)
     // return super.application(application, didFinishLaunchingWithOptions: launchOptions)
     let controller : FlutterViewController = window?.rootViewController as! FlutterViewController;
     let batteryChannel = FlutterMethodChannel.init(name: "flutter_exams/battery",

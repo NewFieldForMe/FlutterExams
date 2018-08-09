@@ -3,6 +3,7 @@ import 'package:flutter_exams/enums.dart';
 import 'package:flutter_exams/view/CardLayoutPage.dart';
 import 'package:flutter_exams/view/ScrollViewPage.dart';
 import 'package:flutter_exams/view/MethodChannelPage.dart';
+import 'package:flutter_exams/view/MapViewPage.dart';
 import 'package:flutter_exams/presenter/ExampleListPagePresenter.dart';
 
 class ExampleListPage extends StatefulWidget {
@@ -56,6 +57,9 @@ class _ExampleListPageState extends State<ExampleListPage> {
               break;
             case ExampleEnum.methodChannel:
               return MethodChannelPage();
+              break;
+            case ExampleEnum.map:
+              return MapViewPage();
               break;
             default:
               return CardLayoutPage();
