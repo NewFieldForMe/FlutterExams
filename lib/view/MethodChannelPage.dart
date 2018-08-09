@@ -28,22 +28,22 @@ class _MethodChannelPageState extends State<MethodChannelPage> {
 
   @override
   Widget build(BuildContext context) {
-  return Scaffold(
-    appBar: AppBar(
-      title: Text("Method Channel"),
-    ),
-    body: Center(
-      child: Column(
-        mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-        children: [
-          RaisedButton(
-            child: Text('Get Battery Level'),
-            onPressed: _getBatteryLevel,
-          ),
-          Text(_batteryLevel),
-        ],
+    return Scaffold(
+      appBar: AppBar(
+        title: Text("Method Channel"),
       ),
-    ),
-  );
+      body: Center(
+        child: Column(
+          mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+          children: [
+            RaisedButton(
+              child: Text('Get Battery Level'),
+              onPressed: _getBatteryLevel,
+            ),
+            Text(_batteryLevel),
+          ],
+        ),
+      ),
+    );
   }
 }
