@@ -28,8 +28,11 @@ class _MethodChannelPageState extends State<MethodChannelPage> {
 
   @override
   Widget build(BuildContext context) {
-  return Material(
-    child: Center(
+  return Scaffold(
+    appBar: AppBar(
+      title: Text("Method Channel"),
+    ),
+    body: Center(
       child: Column(
         mainAxisAlignment: MainAxisAlignment.spaceEvenly,
         children: [
