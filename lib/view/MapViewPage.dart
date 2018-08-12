@@ -28,6 +28,12 @@ class _MapViewPageState extends State<MapViewPage> {
     );
   }
 
+  Location userLocation;
+  @override
+  void initState() {
+    super.initState();
+  }
+
   void _showMap() {
     _mapView.show(new MapOptions(
       showUserLocation: true, 
@@ -40,6 +46,21 @@ class _MapViewPageState extends State<MapViewPage> {
     _mapView.onToolbarAction.listen((id) {
       if (id == 1) { 
         _mapView.dismiss();
+      }
+    });
+    _mapView.onMapReady.listen((_) {
+      if (userLocation != null) {
+        _mapView.setCameraPosition(
+          new CameraPosition(new Location(userLocation.latitude, userLocation.longitude), 14.0)
+        );
+      }
+    });
+    _mapView.onLocationUpdated.listen((location) {
+      if (userLocation == null) {
+        userLocation = location;
+        _mapView.setCameraPosition(
+          new CameraPosition(new Location(userLocation.latitude, userLocation.longitude), 14.0)
+        );
       }
     });
   }

@@ -19,7 +19,7 @@ class MainActivity(): FlutterActivity() {
 
   override fun onCreate(savedInstanceState: Bundle?) {
     super.onCreate(savedInstanceState)
-    // GeneratedPluginRegistrant.registerWith(this)
+    GeneratedPluginRegistrant.registerWith(this)
     
     MethodChannel(flutterView, CHANNEL).setMethodCallHandler { call, result ->
       if (call.method == "getBatteryLevel") {

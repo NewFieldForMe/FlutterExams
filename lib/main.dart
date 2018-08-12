@@ -4,7 +4,7 @@ import 'package:flutter_exams/view/ExampleListPage.dart';
 import 'package:map_view/map_view.dart';
 
 void main() {
-  MapView.setApiKey("< input your api key >");
+  MapView.setApiKey("your_api_key");
   runApp(new MyApp());
 }
 
