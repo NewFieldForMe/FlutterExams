@@ -6,5 +6,6 @@ enum ExampleEnum {
   map,
   topTab,
   bottomTab,
-  stack
+  stack,
+  sliver
 }

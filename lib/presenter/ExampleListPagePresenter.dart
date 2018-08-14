@@ -15,6 +15,7 @@ class ExampleListPagePresenter {
       Example(title: 'Bottom Tab', exampleType: ExampleEnum.bottomTab),
       Example(title: 'Stack', exampleType: ExampleEnum.stack),
       Example(title: 'Top Tab', exampleType: ExampleEnum.topTab),
+      Example(title: 'Sliver', exampleType: ExampleEnum.sliver),
     ];
   }
 }
