@@ -5,6 +5,7 @@ import 'package:flutter_exams/view/ScrollViewPage.dart';
 import 'package:flutter_exams/view/MethodChannelPage.dart';
 import 'package:flutter_exams/view/MapViewPage.dart';
 import 'package:flutter_exams/view/ToptabPage.dart';
+import 'package:flutter_exams/view/StackLayoutPage.dart';
 import 'package:flutter_exams/presenter/ExampleListPagePresenter.dart';
 
 class ExampleListPage extends StatefulWidget {
@@ -65,6 +66,8 @@ class _ExampleListPageState extends State<ExampleListPage> {
             case ExampleEnum.topTab:
               return TopTabPage();
               break;
+            case ExampleEnum.stack:
+              return StackLayoutPage();
             default:
               return CardLayoutPage();
           }

@@ -12,8 +12,9 @@ class ExampleListPagePresenter {
           title: 'Collection View Layout',
           exampleType: ExampleEnum.collectionViewLayout),
       Example(title: 'Map', exampleType: ExampleEnum.map),
+      Example(title: 'Bottom Tab', exampleType: ExampleEnum.bottomTab),
+      Example(title: 'Stack', exampleType: ExampleEnum.stack),
       Example(title: 'Top Tab', exampleType: ExampleEnum.topTab),
-      Example(title: 'Bottom Tab', exampleType: ExampleEnum.bottomTab)
     ];
   }
 }

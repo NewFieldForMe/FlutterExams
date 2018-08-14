@@ -5,5 +5,6 @@ enum ExampleEnum {
   collectionViewLayout,
   map,
   topTab,
-  bottomTab
+  bottomTab,
+  stack
 }
