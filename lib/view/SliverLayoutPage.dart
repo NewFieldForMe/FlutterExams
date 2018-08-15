@@ -11,6 +11,7 @@ class _SliverLayoutPageState extends State<SliverLayoutPage> {
   final double _initialSliverAppBarHeight = 400.0;
   final double _initialHeaderImageHeight = 160.0;
   final double _initialProfileImageHeight = 80.0;
+  final double _initialProfileImageLeftMargin = 16.0;
 
   ScrollController _scrollController;
   double _profileImageHeight = 80.0;
@@ -19,6 +20,7 @@ class _SliverLayoutPageState extends State<SliverLayoutPage> {
   double _statusBarHeight = 20.0;  // 20.0
   double _toolbarHeight = 56.0;    // 56.0
   double _headerImageBottomMargin;
+  double _profileImageLeftMargin = 16.0;
   double _imageBlur = 0.0;
   ThemeData _theme;
 
@@ -80,12 +82,14 @@ class _SliverLayoutPageState extends State<SliverLayoutPage> {
           profileImageHeight = 16.0;
         }
       }
+      var profileImageLeftMargin = _initialProfileImageLeftMargin + (_initialProfileImageHeight - profileImageHeight) / 2;
       setState(() {
         _sliverAppBarHeight = _initialSliverAppBarHeight + biggerValue;
         _headerImageHeight = _initialHeaderImageHeight + biggerValue;
         _headerImageBottomMargin = hibm;
         _imageBlur = blur;
         _profileImageHeight = profileImageHeight;
+        _profileImageLeftMargin = profileImageLeftMargin;
       });
     });
 
@@ -129,7 +133,7 @@ class _SliverLayoutPageState extends State<SliverLayoutPage> {
               Positioned(
                 bottom: _sliverAppBarHeight - _headerImageHeight - (_profileImageHeight / 2) + _statusBarHeight,
                 height: _profileImageHeight,
-                left: 16.0,
+                left: _profileImageLeftMargin,
                   // Container(
                   //   height: 80.0,
                   //   width: 80.0,
