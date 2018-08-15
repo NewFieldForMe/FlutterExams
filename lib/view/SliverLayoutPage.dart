@@ -97,8 +97,6 @@ class _SliverLayoutPageState extends State<SliverLayoutPage> {
       if (profileImageOpacity < 0.0) { profileImageOpacity = 0.0;}
       if (profileImageOpacity > 1.0) { profileImageOpacity = 1.0;}
 
-      // プロフィール画像のOpacityを変更
-
       setState(() {
         _sliverAppBarHeight = _initialSliverAppBarHeight + biggerValue;
         _headerImageHeight = _initialHeaderImageHeight + biggerValue;
@@ -297,13 +295,32 @@ class _SliverLayoutPageState extends State<SliverLayoutPage> {
 
   Widget _buildSliverList() {
     return new SliverFixedExtentList(
-      itemExtent: 50.0,
+      itemExtent: 160.0,
       delegate: new SliverChildBuilderDelegate(
         (BuildContext context, int index) {
-          return new Container(
-            alignment: Alignment.center,
-            color: Colors.lightBlue[100 * (index % 9)],
-            child: new Text('list item $index'),
+          return new Card(
+            margin: EdgeInsets.all(16.0),
+            child: Stack(
+              children: <Widget>[
+                Center(
+                  child: Text("list item $index")
+                ),
+                Positioned(
+                  bottom: 8.0,
+                  right: 8.0,
+                  child: Row(
+                    children: <Widget>[
+                      Container(
+                        margin: EdgeInsets.only(right: 8.0),
+                        child: 
+                          Icon(Icons.favorite, color: Colors.red,),
+                      ),
+                      Icon(Icons.star, color: Colors.lightBlue)
+                    ],
+                  ),
+                )
+              ],
+            ) 
           );
         },
       ),
