@@ -28,8 +28,9 @@ class _SliverLayoutPageState extends State<SliverLayoutPage> {
   @override
   void initState() {
     super.initState();
+    _sliverAppBarHeight = _initialSliverAppBarHeight;
     _scrollController = new ScrollController();
-    _headerImageBottomMargin = _sliverAppBarHeight - _headerImageHeight;
+    _headerImageBottomMargin = _sliverAppBarHeight - _headerImageHeight + _statusBarHeight;
   }
 
   double get _statusAndToolbarHeight { 
