@@ -177,20 +177,30 @@ class _SliverLayoutPageState extends State<SliverLayoutPage> {
                     ),
                     Container(
                       height: 24.0,
-                      child: Text(
-                        "誕生日 2018年12月31日",
-                        style: TextStyle(
-                          fontWeight:  FontWeight.normal, fontSize: 16.0, color: Colors.white70
-                        )
+                      child: Row(
+                        children: <Widget>[
+                          Icon(Icons.tag_faces, color: Colors.white,),
+                          Text(
+                            "誕生日 2018年12月31日",
+                            style: TextStyle(
+                              fontWeight:  FontWeight.normal, fontSize: 16.0, color: Colors.white70
+                            )
+                          ),
+                        ],
                       ),
                     ),
                     Container(
                       height: 24.0,
-                      child: Text(
-                        "2018年4月から利用しています",
-                        style: TextStyle(
-                          fontWeight:  FontWeight.normal, fontSize: 16.0, color: Colors.white70
-                        )
+                      child: Row(
+                        children: <Widget>[
+                          Icon(Icons.subject, color: Colors.white,),
+                          Text(
+                            "2018年4月から利用しています",
+                            style: TextStyle(
+                              fontWeight:  FontWeight.normal, fontSize: 16.0, color: Colors.white70
+                            )
+                          ),
+                        ],
                       ),
                     ),
                     Container(
@@ -237,6 +247,31 @@ class _SliverLayoutPageState extends State<SliverLayoutPage> {
                 )
               ),
               Positioned(
+                bottom: _sliverAppBarHeight - _headerImageHeight - (_initialProfileImageHeight / 2) + _statusBarHeight,
+                height: 32.0,
+                right: 16.0,
+                child: InkWell(
+                  onTap: () => {},
+                  child: new Container(
+                    height: 30.0,
+                    width: 50.0,
+                    decoration: BoxDecoration(
+                      color: Colors.orange,
+                      border: Border.all(color: Colors.white, width: 2.0),
+                      borderRadius: BorderRadius.circular(16.0)
+                    ),
+                    child: Center(
+                      child: Text(
+                        "変更",
+                        style: TextStyle(
+                          fontWeight:  FontWeight.normal, fontSize: 14.0, color: Colors.white
+                        )
+                      )
+                    )
+                  )
+                )
+              ),
+              Positioned(
                 height: _headerImageHeight,
                 left: 0.0,
                 right: 0.0,
@@ -255,7 +290,7 @@ class _SliverLayoutPageState extends State<SliverLayoutPage> {
           );
         },
       ),
-      title: Text("Sliver Layout"),
+      title: null,
     );
   }
 
