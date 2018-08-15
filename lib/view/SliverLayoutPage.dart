@@ -8,14 +8,17 @@ class SliverLayoutPage extends StatefulWidget {
 
 class _SliverLayoutPageState extends State<SliverLayoutPage> {
   @override
-  final double _sliverAppBarHeight = 400.0;
-  final double _headerImageHeight = 160.0;
+  final double _initialSliverAppBarHeight = 400.0;
+  final double _initialHeaderImageHeight = 160.0;
   final double _profileImageHeight = 80.0;
 
   ScrollController _scrollController;
+  double _headerImageHeight = 160.0;
+  double _sliverAppBarHeight = 400.0;
   double _statusBarHeight = 20.0;  // 20.0
   double _toolbarHeight = 56.0;    // 56.0
   double _headerImageBottomMargin;
+  double _imageBlur = 0.0;
   ThemeData _theme;
 
   @override
@@ -37,6 +40,7 @@ class _SliverLayoutPageState extends State<SliverLayoutPage> {
     var scrollableHeight = _sliverAppBarHeight - _statusAndToolbarHeight;
 
     _scrollController.addListener(() {
+      // ヘッダ画像の移動
       var scrollOffset = _scrollController.offset - _statusBarHeight;
       if (scrollOffset < _statusAndToolbarHeight) {
         hibm = _sliverAppBarHeight - _headerImageHeight;
@@ -45,8 +49,33 @@ class _SliverLayoutPageState extends State<SliverLayoutPage> {
       } else {
         hibm = 0.0;
       }
+
+      // ヘッダ画像のぼやけ具合
+      var blur = 0.0;
+      if (scrollOffset <= 0.0) {
+        blur = 0.0;
+      } else if (scrollOffset <= 100.0) {
+        blur = scrollOffset / 10.0;
+      } else {
+        blur = 10.0;
+      }
+
+      // マイナス方向に引っ張った時にヘッダを大きくする
+      var biggerValue = 0.0;
+      if (_scrollController.offset < 0.0) {
+        biggerValue = _scrollController.offset * -1;
+        if (biggerValue > _statusBarHeight) {
+          blur = (biggerValue - _statusBarHeight) / 10.0;
+          if (blur > 10.0) { blur = 10.0; }
+        } else {
+          blur = 0.0;
+        }
+      } 
       setState(() {
+        _sliverAppBarHeight = _initialSliverAppBarHeight + biggerValue;
+        _headerImageHeight = _initialHeaderImageHeight + biggerValue;
         _headerImageBottomMargin = hibm;
+        _imageBlur = blur;
       });
     });
 
@@ -88,7 +117,7 @@ class _SliverLayoutPageState extends State<SliverLayoutPage> {
               ),
 
               Positioned(
-                bottom: _sliverAppBarHeight - _headerImageHeight - (_profileImageHeight / 2),
+                bottom: _sliverAppBarHeight - _headerImageHeight - (_profileImageHeight / 2) + _statusBarHeight,
                 height: _profileImageHeight,
                 left: 16.0,
                   // Container(
@@ -96,6 +125,7 @@ class _SliverLayoutPageState extends State<SliverLayoutPage> {
                   //   width: 80.0,
                   //   color: Colors.red,
                   // ),
+                  
                 child: Container(
                   height: _profileImageHeight,
                   width: _profileImageHeight,
@@ -140,13 +170,13 @@ class _SliverLayoutPageState extends State<SliverLayoutPage> {
     return new Container(
       decoration: BoxDecoration(
         image: new DecorationImage(
-          fit: BoxFit.fitWidth,
+          fit: BoxFit.cover,
           alignment: FractionalOffset.bottomCenter,
           image: new ExactAssetImage(imageName)
         )
       ),
       child: BackdropFilter(
-        filter: ImageFilter.blur(sigmaX: 0.0, sigmaY: 0.0),
+        filter: ImageFilter.blur(sigmaX: _imageBlur, sigmaY: _imageBlur),
         child: Container(
           decoration: new BoxDecoration(color: Colors.white.withOpacity(0.0)),
         ),
