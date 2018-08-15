@@ -140,18 +140,6 @@ class _SliverLayoutPageState extends State<SliverLayoutPage> {
           return new Stack(
             children: <Widget>[
               Container(color: Colors.orange),
-              Container(
-                height: _headerImageHeight,
-                margin: EdgeInsets.only(bottom: _headerImageBottomMargin),
-                child: _blurHeaderImage('assets/neko1_600x400.jpg'),
-              ),
-              Positioned(
-                bottom: _sliverAppBarHeight - _headerImageHeight - (_profileImageHeight / 2) + _statusBarHeight,
-                height: _profileImageHeight,
-                left: _profileImageLeftMargin,
-                child: 
-                  _buildProfileImage('assets/neko2_400x400.png')
-              ),
               Positioned(
                 bottom: 0.0,
                 left: 16.0,
@@ -179,7 +167,7 @@ class _SliverLayoutPageState extends State<SliverLayoutPage> {
                       ),
                     ),
                     Container(
-                      height: 72.0,
+                      height: 78.0,
                       child: Text(
                         "iOS app developer.Nya-n driven development. Others:Rails/docker/Angular/IoT/AWS/ML/Alexa/Flutter.",
                         style: TextStyle(
@@ -247,6 +235,20 @@ class _SliverLayoutPageState extends State<SliverLayoutPage> {
                     ),
                   ],
                 )
+              ),
+              Positioned(
+                height: _headerImageHeight,
+                left: 0.0,
+                right: 0.0,
+                bottom: _headerImageBottomMargin,
+                child: _blurHeaderImage('assets/neko1_600x400.jpg'),
+              ),
+              Positioned(
+                bottom: _sliverAppBarHeight - _headerImageHeight - (_profileImageHeight / 2) + _statusBarHeight,
+                height: _profileImageHeight,
+                left: _profileImageLeftMargin,
+                child: 
+                  _buildProfileImage('assets/neko2_400x400.png')
               ),
             ],
             fit: StackFit.expand,
