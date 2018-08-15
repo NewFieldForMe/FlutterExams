@@ -7,5 +7,6 @@ enum ExampleEnum {
   topTab,
   bottomTab,
   stack,
-  sliver
+  sliver,
+  rowAndColoumn
 }

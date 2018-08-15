@@ -7,6 +7,7 @@ import 'package:flutter_exams/view/MapViewPage.dart';
 import 'package:flutter_exams/view/ToptabPage.dart';
 import 'package:flutter_exams/view/StackLayoutPage.dart';
 import 'package:flutter_exams/view/SliverLayoutPage.dart';
+import 'package:flutter_exams/view/RowAndColumnPage.dart';
 import 'package:flutter_exams/presenter/ExampleListPagePresenter.dart';
 
 class ExampleListPage extends StatefulWidget {
@@ -72,6 +73,9 @@ class _ExampleListPageState extends State<ExampleListPage> {
               break;
             case ExampleEnum.sliver:
               return SliverLayoutPage();
+              break;
+            case ExampleEnum.rowAndColoumn:
+              return RowAndColumnPage();
               break;
             default:
               return CardLayoutPage();
