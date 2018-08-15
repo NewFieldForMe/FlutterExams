@@ -10,9 +10,10 @@ class _SliverLayoutPageState extends State<SliverLayoutPage> {
   @override
   final double _initialSliverAppBarHeight = 400.0;
   final double _initialHeaderImageHeight = 160.0;
-  final double _profileImageHeight = 80.0;
+  final double _initialProfileImageHeight = 80.0;
 
   ScrollController _scrollController;
+  double _profileImageHeight = 80.0;
   double _headerImageHeight = 160.0;
   double _sliverAppBarHeight = 400.0;
   double _statusBarHeight = 20.0;  // 20.0
@@ -36,19 +37,18 @@ class _SliverLayoutPageState extends State<SliverLayoutPage> {
     _statusBarHeight = MediaQuery.of(context).padding.top;
     _theme = Theme.of(context);
 
-    var hibm = _headerImageHeight;
+    var hibm = _sliverAppBarHeight - _headerImageHeight;
     var scrollableHeight = _sliverAppBarHeight - _statusAndToolbarHeight;
 
     _scrollController.addListener(() {
       // ヘッダ画像の移動
       var scrollOffset = _scrollController.offset - _statusBarHeight;
-      if (scrollOffset < _statusAndToolbarHeight) {
-        hibm = _sliverAppBarHeight - _headerImageHeight;
-      } else if (scrollOffset > _statusAndToolbarHeight && scrollOffset <= scrollableHeight){
-        hibm = scrollableHeight - scrollOffset;
-      } else {
-        hibm = 0.0;
-      }
+      if (_scrollController.offset <= _headerImageHeight - _statusAndToolbarHeight) {
+        hibm = _sliverAppBarHeight - _headerImageHeight + _statusBarHeight;
+      } else if (_scrollController.offset > _headerImageHeight - _statusAndToolbarHeight && _scrollController.offset <= _sliverAppBarHeight){
+        hibm = _sliverAppBarHeight - _scrollController.offset - _toolbarHeight;
+      } else { hibm = 0.0; }
+      if (hibm < 0.0) { hibm = 0.0;}
 
       // ヘッダ画像のぼやけ具合
       var blur = 0.0;
@@ -70,12 +70,22 @@ class _SliverLayoutPageState extends State<SliverLayoutPage> {
         } else {
           blur = 0.0;
         }
-      } 
+      }
+
+      // プロフィール画像の大きさ変更
+      var profileImageHeight = _initialProfileImageHeight;
+      if (_scrollController.offset > _statusBarHeight) {
+        profileImageHeight = _initialProfileImageHeight - _scrollController.offset + _statusBarHeight;
+        if (profileImageHeight < 16.0) {
+          profileImageHeight = 16.0;
+        }
+      }
       setState(() {
         _sliverAppBarHeight = _initialSliverAppBarHeight + biggerValue;
         _headerImageHeight = _initialHeaderImageHeight + biggerValue;
         _headerImageBottomMargin = hibm;
         _imageBlur = blur;
+        _profileImageHeight = profileImageHeight;
       });
     });
 
@@ -130,6 +140,7 @@ class _SliverLayoutPageState extends State<SliverLayoutPage> {
                   height: _profileImageHeight,
                   width: _profileImageHeight,
                   decoration: BoxDecoration(
+                    border: Border.all(color: Colors.orange, width: 4.0),
                     shape: BoxShape.circle,
                     image: new DecorationImage(
                       fit: BoxFit.fitWidth,
