@@ -22,6 +22,7 @@ class _SliverLayoutPageState extends State<SliverLayoutPage> {
   double _headerImageBottomMargin;
   double _profileImageLeftMargin = 16.0;
   double _imageBlur = 0.0;
+  double _profileImageOpacity = 1.0;
   ThemeData _theme;
 
   @override
@@ -83,6 +84,20 @@ class _SliverLayoutPageState extends State<SliverLayoutPage> {
         }
       }
       var profileImageLeftMargin = _initialProfileImageLeftMargin + (_initialProfileImageHeight - profileImageHeight) / 2;
+
+      var profileImageOpacity = 1.0;
+      if (profileImageHeight > _initialProfileImageHeight / 2.0) {
+        profileImageOpacity = 1.0;
+      } else {
+        var a = (_initialProfileImageHeight / 2.0) - profileImageHeight;
+        if (a == 0.0) { profileImageOpacity = 0.0; }
+        else { profileImageOpacity = 1 / a; }
+      }
+      if (profileImageOpacity < 0.0) { profileImageOpacity = 0.0;}
+      if (profileImageOpacity > 1.0) { profileImageOpacity = 1.0;}
+
+      // プロフィール画像のOpacityを変更
+
       setState(() {
         _sliverAppBarHeight = _initialSliverAppBarHeight + biggerValue;
         _headerImageHeight = _initialHeaderImageHeight + biggerValue;
@@ -90,6 +105,7 @@ class _SliverLayoutPageState extends State<SliverLayoutPage> {
         _imageBlur = blur;
         _profileImageHeight = profileImageHeight;
         _profileImageLeftMargin = profileImageLeftMargin;
+        _profileImageOpacity = profileImageOpacity;
       });
     });
 
@@ -129,36 +145,111 @@ class _SliverLayoutPageState extends State<SliverLayoutPage> {
                 margin: EdgeInsets.only(bottom: _headerImageBottomMargin),
                 child: _blurHeaderImage('assets/neko1_600x400.jpg'),
               ),
-
               Positioned(
                 bottom: _sliverAppBarHeight - _headerImageHeight - (_profileImageHeight / 2) + _statusBarHeight,
                 height: _profileImageHeight,
                 left: _profileImageLeftMargin,
-                  // Container(
-                  //   height: 80.0,
-                  //   width: 80.0,
-                  //   color: Colors.red,
-                  // ),
-                  
-                child: Container(
-                  height: _profileImageHeight,
-                  width: _profileImageHeight,
-                  decoration: BoxDecoration(
-                    border: Border.all(color: Colors.orange, width: 4.0),
-                    shape: BoxShape.circle,
-                    image: new DecorationImage(
-                      fit: BoxFit.fitWidth,
-                      alignment: FractionalOffset.bottomCenter,
-                      image: new ExactAssetImage('assets/neko2_400x400.png')
-                    )
-                  ),
+                child: 
+                  _buildProfileImage('assets/neko2_400x400.png')
+              ),
+              Positioned(
+                bottom: 0.0,
+                left: 16.0,
+                right: 16.0,
+                child: Column(
+                  crossAxisAlignment: CrossAxisAlignment.start,
+                  mainAxisAlignment: MainAxisAlignment.start,
+                  children: <Widget>[
+                    Container(
+                      height: 32.0,
+                      child: Text(
+                        "Ryo Yamada",
+                        style: TextStyle(
+                          fontWeight:  FontWeight.bold, fontSize: 24.0, color: Colors.white
+                        )
+                      ),
+                    ),
+                    Container(
+                      height: 24.0,
+                      child: Text(
+                        "@Miisan_Is_Neko",
+                        style: TextStyle(
+                          fontWeight:  FontWeight.normal, fontSize: 16.0, color: Colors.white70
+                        )
+                      ),
+                    ),
+                    Container(
+                      height: 72.0,
+                      child: Text(
+                        "iOS app developer.Nya-n driven development. Others:Rails/docker/Angular/IoT/AWS/ML/Alexa/Flutter.",
+                        style: TextStyle(
+                          fontWeight:  FontWeight.normal, fontSize: 16.0, color: Colors.white
+                        )
+                      ),
+                    ),
+                    Container(
+                      height: 24.0,
+                      child: Text(
+                        "誕生日 2018年12月31日",
+                        style: TextStyle(
+                          fontWeight:  FontWeight.normal, fontSize: 16.0, color: Colors.white70
+                        )
+                      ),
+                    ),
+                    Container(
+                      height: 24.0,
+                      child: Text(
+                        "2018年4月から利用しています",
+                        style: TextStyle(
+                          fontWeight:  FontWeight.normal, fontSize: 16.0, color: Colors.white70
+                        )
+                      ),
+                    ),
+                    Container(
+                      height: 36.0,
+                      child: Row(
+                        children: <Widget>[
+                          Container(
+                            margin: EdgeInsets.only(right: 4.0),
+                            child: Text(
+                              "256",
+                              style: TextStyle(
+                                fontWeight:  FontWeight.bold, fontSize: 16.0, color: Colors.white
+                              )
+                            ),
+                          ),
+                          Container(
+                            margin: EdgeInsets.only(right: 24.0),
+                            child: Text(
+                              "フォロー中",
+                              style: TextStyle(
+                                fontWeight:  FontWeight.normal, fontSize: 16.0, color: Colors.white70
+                              )
+                            ),
+                          ),
+                          Container(
+                            margin: EdgeInsets.only(right: 4.0),
+                            child: Text(
+                              "128",
+                              style: TextStyle(
+                                fontWeight:  FontWeight.bold, fontSize: 16.0, color: Colors.white
+                              )
+                            ),
+                          ),
+                          Text(
+                            "フォロワー",
+                            style: TextStyle(
+                              fontWeight:  FontWeight.normal, fontSize: 16.0, color: Colors.white70
+                            )
+                          ),
+                        ],
+                      )
+                    ),
+                  ],
                 )
               ),
-              Align(
-                alignment: new Alignment(0.25, 0.75),
-                child: Text("align"),
-              ),
             ],
+            fit: StackFit.expand,
           );
         },
       ),
@@ -179,6 +270,26 @@ class _SliverLayoutPageState extends State<SliverLayoutPage> {
         },
       ),
     );
+  }
+
+  Widget _buildProfileImage(imageName) {
+    return Opacity(
+      opacity: _profileImageOpacity,
+      child: 
+        Container(
+          height: _profileImageHeight,
+          width: _profileImageHeight,
+          decoration: BoxDecoration(
+            border: Border.all(color: Colors.orange, width: 4.0),
+            shape: BoxShape.circle,
+            image: new DecorationImage(
+              fit: BoxFit.fitWidth,
+              alignment: FractionalOffset.bottomCenter,
+              image: new ExactAssetImage(imageName)
+            )
+          ),
+        )
+      );
   }
 
   Widget _blurHeaderImage(imageName) {
