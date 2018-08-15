@@ -29,8 +29,8 @@ class _SliverLayoutPageState extends State<SliverLayoutPage> {
   void initState() {
     super.initState();
     _sliverAppBarHeight = _initialSliverAppBarHeight;
+    _headerImageHeight = _initialHeaderImageHeight;
     _scrollController = new ScrollController();
-    _headerImageBottomMargin = _sliverAppBarHeight - _headerImageHeight + _statusBarHeight;
   }
 
   double get _statusAndToolbarHeight { 
@@ -42,7 +42,6 @@ class _SliverLayoutPageState extends State<SliverLayoutPage> {
     _theme = Theme.of(context);
 
     var hibm = _sliverAppBarHeight - _headerImageHeight;
-    var scrollableHeight = _sliverAppBarHeight - _statusAndToolbarHeight;
 
     _scrollController.addListener(() {
       // ヘッダ画像の移動
