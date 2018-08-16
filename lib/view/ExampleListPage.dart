@@ -8,6 +8,7 @@ import 'package:flutter_exams/view/ToptabPage.dart';
 import 'package:flutter_exams/view/StackLayoutPage.dart';
 import 'package:flutter_exams/view/SliverLayoutPage.dart';
 import 'package:flutter_exams/view/RowAndColumnPage.dart';
+import 'package:flutter_exams/view/NestedScrollViewPage.dart';
 import 'package:flutter_exams/presenter/ExampleListPagePresenter.dart';
 
 class ExampleListPage extends StatefulWidget {
@@ -76,6 +77,9 @@ class _ExampleListPageState extends State<ExampleListPage> {
               break;
             case ExampleEnum.rowAndColoumn:
               return RowAndColumnPage();
+              break;
+            case ExampleEnum.nestedScrollView:
+              return NestedScrollViewPage();
               break;
             default:
               return CardLayoutPage();

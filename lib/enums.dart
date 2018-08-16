@@ -8,5 +8,6 @@ enum ExampleEnum {
   bottomTab,
   stack,
   sliver,
-  rowAndColoumn
+  rowAndColoumn,
+  nestedScrollView
 }
