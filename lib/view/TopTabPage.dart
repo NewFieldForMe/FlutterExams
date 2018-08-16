@@ -11,28 +11,27 @@ class _TopTabPageState extends State<TopTabPage> {
     return DefaultTabController(
       length: 3,
       child: Scaffold(
-          appBar: AppBar(
-            bottom: PreferredSize(
-              preferredSize: Size.fromHeight(50.0),
-                child: TabBar(
-                  tabs: [
-                    new Tab(text: "swift"),
-                    new Tab(text: "kotlin"),
-                    new Tab(text: "dart"),
-                  ],
-              ),
+        appBar: AppBar(
+          bottom: PreferredSize(
+            preferredSize: Size.fromHeight(50.0),
+            child: TabBar(
+              tabs: [
+                new Tab(text: "swift"),
+                new Tab(text: "kotlin"),
+                new Tab(text: "dart"),
+              ],
             ),
-            title: Text('Tabs Demo'),
           ),
-          body: TabBarView(
-            children: [
-              Icon(Icons.directions_car),
-              Icon(Icons.directions_transit),
-              Icon(Icons.directions_bike),
-            ],
-          ),
+          title: Text('Tabs Demo'),
         ),
+        body: TabBarView(
+          children: [
+            Icon(Icons.directions_car),
+            Icon(Icons.directions_transit),
+            Icon(Icons.directions_bike),
+          ],
+        ),
+      ),
     );
-
   }
 }

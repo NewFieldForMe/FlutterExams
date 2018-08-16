@@ -17,8 +17,8 @@ class _SliverLayoutPageState extends State<SliverLayoutPage> {
   double _profileImageHeight = 80.0;
   double _headerImageHeight = 160.0;
   double _sliverAppBarHeight = 400.0;
-  double _statusBarHeight = 20.0;  // 20.0
-  double _toolbarHeight = 56.0;    // 56.0
+  double _statusBarHeight = 20.0; // 20.0
+  double _toolbarHeight = 56.0; // 56.0
   double _headerImageBottomMargin;
   double _profileImageLeftMargin = 16.0;
   double _imageBlur = 0.0;
@@ -33,8 +33,8 @@ class _SliverLayoutPageState extends State<SliverLayoutPage> {
     _scrollController = new ScrollController();
   }
 
-  double get _statusAndToolbarHeight { 
-    return _statusBarHeight + _toolbarHeight; 
+  double get _statusAndToolbarHeight {
+    return _statusBarHeight + _toolbarHeight;
   }
 
   Widget build(BuildContext context) {
@@ -46,12 +46,19 @@ class _SliverLayoutPageState extends State<SliverLayoutPage> {
     _scrollController.addListener(() {
       // ヘッダ画像の移動
       var scrollOffset = _scrollController.offset - _statusBarHeight;
-      if (_scrollController.offset <= _headerImageHeight - _statusAndToolbarHeight) {
+      if (_scrollController.offset <=
+          _headerImageHeight - _statusAndToolbarHeight) {
         hibm = _sliverAppBarHeight - _headerImageHeight + _statusBarHeight;
-      } else if (_scrollController.offset > _headerImageHeight - _statusAndToolbarHeight && _scrollController.offset <= _sliverAppBarHeight){
+      } else if (_scrollController.offset >
+              _headerImageHeight - _statusAndToolbarHeight &&
+          _scrollController.offset <= _sliverAppBarHeight) {
         hibm = _sliverAppBarHeight - _scrollController.offset - _toolbarHeight;
-      } else { hibm = 0.0; }
-      if (hibm < 0.0) { hibm = 0.0;}
+      } else {
+        hibm = 0.0;
+      }
+      if (hibm < 0.0) {
+        hibm = 0.0;
+      }
 
       // ヘッダ画像のぼやけ具合
       var blur = 0.0;
@@ -69,7 +76,9 @@ class _SliverLayoutPageState extends State<SliverLayoutPage> {
         biggerValue = _scrollController.offset * -1;
         if (biggerValue > _statusBarHeight) {
           blur = (biggerValue - _statusBarHeight) / 10.0;
-          if (blur > 10.0) { blur = 10.0; }
+          if (blur > 10.0) {
+            blur = 10.0;
+          }
         } else {
           blur = 0.0;
         }
@@ -78,23 +87,33 @@ class _SliverLayoutPageState extends State<SliverLayoutPage> {
       // プロフィール画像の大きさ変更
       var profileImageHeight = _initialProfileImageHeight;
       if (_scrollController.offset > _statusBarHeight) {
-        profileImageHeight = _initialProfileImageHeight - _scrollController.offset + _statusBarHeight;
+        profileImageHeight = _initialProfileImageHeight -
+            _scrollController.offset +
+            _statusBarHeight;
         if (profileImageHeight < 16.0) {
           profileImageHeight = 16.0;
         }
       }
-      var profileImageLeftMargin = _initialProfileImageLeftMargin + (_initialProfileImageHeight - profileImageHeight) / 2;
+      var profileImageLeftMargin = _initialProfileImageLeftMargin +
+          (_initialProfileImageHeight - profileImageHeight) / 2;
 
       var profileImageOpacity = 1.0;
       if (profileImageHeight > _initialProfileImageHeight / 2.0) {
         profileImageOpacity = 1.0;
       } else {
         var a = (_initialProfileImageHeight / 2.0) - profileImageHeight;
-        if (a == 0.0) { profileImageOpacity = 0.0; }
-        else { profileImageOpacity = 1 / a; }
+        if (a == 0.0) {
+          profileImageOpacity = 0.0;
+        } else {
+          profileImageOpacity = 1 / a;
+        }
       }
-      if (profileImageOpacity < 0.0) { profileImageOpacity = 0.0;}
-      if (profileImageOpacity > 1.0) { profileImageOpacity = 1.0;}
+      if (profileImageOpacity < 0.0) {
+        profileImageOpacity = 0.0;
+      }
+      if (profileImageOpacity > 1.0) {
+        profileImageOpacity = 1.0;
+      }
 
       setState(() {
         _sliverAppBarHeight = _initialSliverAppBarHeight + biggerValue;
@@ -114,19 +133,13 @@ class _SliverLayoutPageState extends State<SliverLayoutPage> {
 
     return Scaffold(
         // appBar: AppBar(title: Text("hoge"),),
-        body: _customScrollView()
-    );
-
+        body: _customScrollView());
   }
 
   Widget _customScrollView() {
     return new CustomScrollView(
-      controller: this._scrollController,
-      slivers: [
-        _buildSliverAppBar(context),
-        _buildSliverList()
-      ]
-    );
+        controller: this._scrollController,
+        slivers: [_buildSliverAppBar(context), _buildSliverList()]);
   }
 
   Widget _buildSliverAppBar(BuildContext context) {
@@ -139,136 +152,130 @@ class _SliverLayoutPageState extends State<SliverLayoutPage> {
             children: <Widget>[
               Container(color: Colors.orange),
               Positioned(
-                bottom: 0.0,
-                left: 16.0,
-                right: 16.0,
-                child: Column(
-                  crossAxisAlignment: CrossAxisAlignment.start,
-                  mainAxisAlignment: MainAxisAlignment.start,
-                  children: <Widget>[
-                    Container(
-                      height: 32.0,
-                      child: Text(
-                        "Ryo Yamada",
-                        style: TextStyle(
-                          fontWeight:  FontWeight.bold, fontSize: 24.0, color: Colors.white
-                        )
-                      ),
-                    ),
-                    Container(
-                      height: 24.0,
-                      child: Text(
-                        "@Miisan_Is_Neko",
-                        style: TextStyle(
-                          fontWeight:  FontWeight.normal, fontSize: 16.0, color: Colors.white70
-                        )
-                      ),
-                    ),
-                    Container(
-                      height: 78.0,
-                      child: Text(
-                        "iOS app developer.Nya-n driven development. Others:Rails/docker/Angular/IoT/AWS/ML/Alexa/Flutter.",
-                        style: TextStyle(
-                          fontWeight:  FontWeight.normal, fontSize: 16.0, color: Colors.white
-                        )
-                      ),
-                    ),
-                    Container(
-                      height: 24.0,
-                      child: Row(
-                        children: <Widget>[
-                          Icon(Icons.tag_faces, color: Colors.white,),
-                          Text(
-                            "誕生日 2018年12月31日",
+                  bottom: 0.0,
+                  left: 16.0,
+                  right: 16.0,
+                  child: Column(
+                    crossAxisAlignment: CrossAxisAlignment.start,
+                    mainAxisAlignment: MainAxisAlignment.start,
+                    children: <Widget>[
+                      Container(
+                        height: 32.0,
+                        child: Text("Ryo Yamada",
                             style: TextStyle(
-                              fontWeight:  FontWeight.normal, fontSize: 16.0, color: Colors.white70
-                            )
-                          ),
-                        ],
+                                fontWeight: FontWeight.bold,
+                                fontSize: 24.0,
+                                color: Colors.white)),
                       ),
-                    ),
-                    Container(
-                      height: 24.0,
-                      child: Row(
-                        children: <Widget>[
-                          Icon(Icons.subject, color: Colors.white,),
-                          Text(
-                            "2018年4月から利用しています",
+                      Container(
+                        height: 24.0,
+                        child: Text("@Miisan_Is_Neko",
                             style: TextStyle(
-                              fontWeight:  FontWeight.normal, fontSize: 16.0, color: Colors.white70
-                            )
-                          ),
-                        ],
+                                fontWeight: FontWeight.normal,
+                                fontSize: 16.0,
+                                color: Colors.white70)),
                       ),
-                    ),
-                    Container(
-                      height: 36.0,
-                      child: Row(
-                        children: <Widget>[
-                          Container(
-                            margin: EdgeInsets.only(right: 4.0),
-                            child: Text(
-                              "256",
-                              style: TextStyle(
-                                fontWeight:  FontWeight.bold, fontSize: 16.0, color: Colors.white
-                              )
-                            ),
-                          ),
-                          Container(
-                            margin: EdgeInsets.only(right: 24.0),
-                            child: Text(
-                              "フォロー中",
-                              style: TextStyle(
-                                fontWeight:  FontWeight.normal, fontSize: 16.0, color: Colors.white70
-                              )
-                            ),
-                          ),
-                          Container(
-                            margin: EdgeInsets.only(right: 4.0),
-                            child: Text(
-                              "128",
-                              style: TextStyle(
-                                fontWeight:  FontWeight.bold, fontSize: 16.0, color: Colors.white
-                              )
-                            ),
-                          ),
-                          Text(
-                            "フォロワー",
+                      Container(
+                        height: 78.0,
+                        child: Text(
+                            "iOS app developer.Nya-n driven development. Others:Rails/docker/Angular/IoT/AWS/ML/Alexa/Flutter.",
                             style: TextStyle(
-                              fontWeight:  FontWeight.normal, fontSize: 16.0, color: Colors.white70
-                            )
-                          ),
-                        ],
-                      )
-                    ),
-                  ],
-                )
-              ),
+                                fontWeight: FontWeight.normal,
+                                fontSize: 16.0,
+                                color: Colors.white)),
+                      ),
+                      Container(
+                        height: 24.0,
+                        child: Row(
+                          children: <Widget>[
+                            Icon(
+                              Icons.tag_faces,
+                              color: Colors.white,
+                            ),
+                            Text("誕生日 2018年12月31日",
+                                style: TextStyle(
+                                    fontWeight: FontWeight.normal,
+                                    fontSize: 16.0,
+                                    color: Colors.white70)),
+                          ],
+                        ),
+                      ),
+                      Container(
+                        height: 24.0,
+                        child: Row(
+                          children: <Widget>[
+                            Icon(
+                              Icons.subject,
+                              color: Colors.white,
+                            ),
+                            Text("2018年4月から利用しています",
+                                style: TextStyle(
+                                    fontWeight: FontWeight.normal,
+                                    fontSize: 16.0,
+                                    color: Colors.white70)),
+                          ],
+                        ),
+                      ),
+                      Container(
+                          height: 36.0,
+                          child: Row(
+                            children: <Widget>[
+                              Container(
+                                margin: EdgeInsets.only(right: 4.0),
+                                child: Text("256",
+                                    style: TextStyle(
+                                        fontWeight: FontWeight.bold,
+                                        fontSize: 16.0,
+                                        color: Colors.white)),
+                              ),
+                              Container(
+                                margin: EdgeInsets.only(right: 24.0),
+                                child: Text("フォロー中",
+                                    style: TextStyle(
+                                        fontWeight: FontWeight.normal,
+                                        fontSize: 16.0,
+                                        color: Colors.white70)),
+                              ),
+                              Container(
+                                margin: EdgeInsets.only(right: 4.0),
+                                child: Text("128",
+                                    style: TextStyle(
+                                        fontWeight: FontWeight.bold,
+                                        fontSize: 16.0,
+                                        color: Colors.white)),
+                              ),
+                              Text("フォロワー",
+                                  style: TextStyle(
+                                      fontWeight: FontWeight.normal,
+                                      fontSize: 16.0,
+                                      color: Colors.white70)),
+                            ],
+                          )),
+                    ],
+                  )),
               Positioned(
-                bottom: _sliverAppBarHeight - _headerImageHeight - (_initialProfileImageHeight / 2) + _statusBarHeight,
-                height: 32.0,
-                right: 16.0,
-                child: InkWell(
-                  onTap: () => {},
-                  child: new Container(
-                    height: 30.0,
-                    width: 50.0,
-                    decoration: BoxDecoration(
-                      color: Colors.orange,
-                      border: Border.all(color: Colors.white, width: 2.0),
-                      borderRadius: BorderRadius.circular(16.0)
-                    ),
-                    child: Center(
-                      child: Text(
-                        "変更",
-                        style: TextStyle(
-                          fontWeight:  FontWeight.normal, fontSize: 14.0, color: Colors.white
-                        )
-                      )
-                    )
-                  )
-                )
-              ),
+                  bottom: _sliverAppBarHeight -
+                      _headerImageHeight -
+                      (_initialProfileImageHeight / 2) +
+                      _statusBarHeight,
+                  height: 32.0,
+                  right: 16.0,
+                  child: InkWell(
+                      onTap: () => {},
+                      child: new Container(
+                          height: 30.0,
+                          width: 50.0,
+                          decoration: BoxDecoration(
+                              color: Colors.orange,
+                              border:
+                                  Border.all(color: Colors.white, width: 2.0),
+                              borderRadius: BorderRadius.circular(16.0)),
+                          child: Center(
+                              child: Text("変更",
+                                  style: TextStyle(
+                                      fontWeight: FontWeight.normal,
+                                      fontSize: 14.0,
+                                      color: Colors.white)))))),
               Positioned(
                 height: _headerImageHeight,
                 left: 0.0,
@@ -277,12 +284,13 @@ class _SliverLayoutPageState extends State<SliverLayoutPage> {
                 child: _blurHeaderImage('assets/neko1_600x400.jpg'),
               ),
               Positioned(
-                bottom: _sliverAppBarHeight - _headerImageHeight - (_profileImageHeight / 2) + _statusBarHeight,
-                height: _profileImageHeight,
-                left: _profileImageLeftMargin,
-                child: 
-                  _buildProfileImage('assets/neko2_400x400.png')
-              ),
+                  bottom: _sliverAppBarHeight -
+                      _headerImageHeight -
+                      (_profileImageHeight / 2) +
+                      _statusBarHeight,
+                  height: _profileImageHeight,
+                  left: _profileImageLeftMargin,
+                  child: _buildProfileImage('assets/neko2_400x400.png')),
             ],
             fit: StackFit.expand,
           );
@@ -298,29 +306,28 @@ class _SliverLayoutPageState extends State<SliverLayoutPage> {
       delegate: new SliverChildBuilderDelegate(
         (BuildContext context, int index) {
           return new Card(
-            margin: EdgeInsets.all(16.0),
-            child: Stack(
-              children: <Widget>[
-                Center(
-                  child: Text("list item $index")
-                ),
-                Positioned(
-                  bottom: 8.0,
-                  right: 8.0,
-                  child: Row(
-                    children: <Widget>[
-                      Container(
-                        margin: EdgeInsets.only(right: 8.0),
-                        child: 
-                          Icon(Icons.favorite, color: Colors.red,),
-                      ),
-                      Icon(Icons.star, color: Colors.lightBlue)
-                    ],
-                  ),
-                )
-              ],
-            ) 
-          );
+              margin: EdgeInsets.all(16.0),
+              child: Stack(
+                children: <Widget>[
+                  Center(child: Text("list item $index")),
+                  Positioned(
+                    bottom: 8.0,
+                    right: 8.0,
+                    child: Row(
+                      children: <Widget>[
+                        Container(
+                          margin: EdgeInsets.only(right: 8.0),
+                          child: Icon(
+                            Icons.favorite,
+                            color: Colors.red,
+                          ),
+                        ),
+                        Icon(Icons.star, color: Colors.lightBlue)
+                      ],
+                    ),
+                  )
+                ],
+              ));
         },
       ),
     );
@@ -328,33 +335,27 @@ class _SliverLayoutPageState extends State<SliverLayoutPage> {
 
   Widget _buildProfileImage(imageName) {
     return Opacity(
-      opacity: _profileImageOpacity,
-      child: 
-        Container(
+        opacity: _profileImageOpacity,
+        child: Container(
           height: _profileImageHeight,
           width: _profileImageHeight,
           decoration: BoxDecoration(
-            border: Border.all(color: Colors.orange, width: 4.0),
-            shape: BoxShape.circle,
-            image: new DecorationImage(
-              fit: BoxFit.fitWidth,
-              alignment: FractionalOffset.bottomCenter,
-              image: new ExactAssetImage(imageName)
-            )
-          ),
-        )
-      );
+              border: Border.all(color: Colors.orange, width: 4.0),
+              shape: BoxShape.circle,
+              image: new DecorationImage(
+                  fit: BoxFit.fitWidth,
+                  alignment: FractionalOffset.bottomCenter,
+                  image: new ExactAssetImage(imageName))),
+        ));
   }
 
   Widget _blurHeaderImage(imageName) {
     return new Container(
       decoration: BoxDecoration(
-        image: new DecorationImage(
-          fit: BoxFit.cover,
-          alignment: FractionalOffset.bottomCenter,
-          image: new ExactAssetImage(imageName)
-        )
-      ),
+          image: new DecorationImage(
+              fit: BoxFit.cover,
+              alignment: FractionalOffset.bottomCenter,
+              image: new ExactAssetImage(imageName))),
       child: BackdropFilter(
         filter: ImageFilter.blur(sigmaX: _imageBlur, sigmaY: _imageBlur),
         child: Container(

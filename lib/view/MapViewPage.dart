@@ -20,7 +20,9 @@ class _MapViewPageState extends State<MapViewPage> {
           children: [
             RaisedButton(
               child: Text('Show Map modal.'),
-              onPressed: () { _showMap(); },
+              onPressed: () {
+                _showMap();
+              },
             ),
           ],
         ),
@@ -35,32 +37,30 @@ class _MapViewPageState extends State<MapViewPage> {
   }
 
   void _showMap() {
-    _mapView.show(new MapOptions(
-      showUserLocation: true, 
-      hideToolbar: false,
-      showMyLocationButton: true,
-      showCompassButton: true,
-      ),
-      toolbarActions: [new ToolbarAction("Close", 1)]
-    );
+    _mapView.show(
+        new MapOptions(
+          showUserLocation: true,
+          hideToolbar: false,
+          showMyLocationButton: true,
+          showCompassButton: true,
+        ),
+        toolbarActions: [new ToolbarAction("Close", 1)]);
     _mapView.onToolbarAction.listen((id) {
-      if (id == 1) { 
+      if (id == 1) {
         _mapView.dismiss();
       }
     });
     _mapView.onMapReady.listen((_) {
       if (userLocation != null) {
-        _mapView.setCameraPosition(
-          new CameraPosition(new Location(userLocation.latitude, userLocation.longitude), 14.0)
-        );
+        _mapView.setCameraPosition(new CameraPosition(
+            new Location(userLocation.latitude, userLocation.longitude), 14.0));
       }
     });
     _mapView.onLocationUpdated.listen((location) {
       if (userLocation == null) {
         userLocation = location;
-        _mapView.setCameraPosition(
-          new CameraPosition(new Location(userLocation.latitude, userLocation.longitude), 14.0)
-        );
+        _mapView.setCameraPosition(new CameraPosition(
+            new Location(userLocation.latitude, userLocation.longitude), 14.0));
       }
     });
   }

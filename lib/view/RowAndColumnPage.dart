@@ -12,8 +12,7 @@ class _RowAndColumnPageState extends State<RowAndColumnPage> {
       appBar: AppBar(
         title: Text("Row and Column"),
       ),
-      body: 
-      Row(children: <Widget>[
+      body: Row(children: <Widget>[
         Card(
           elevation: 4.0,
           color: Colors.blue,
@@ -23,7 +22,10 @@ class _RowAndColumnPageState extends State<RowAndColumnPage> {
             mainAxisAlignment: MainAxisAlignment.center,
             mainAxisSize: MainAxisSize.min,
             children: <Widget>[
-              Icon(Icons.star, size: 50.0,),
+              Icon(
+                Icons.star,
+                size: 50.0,
+              ),
               Icon(Icons.star),
               SizedBox(height: 16.0),
               Icon(Icons.star)
@@ -31,31 +33,35 @@ class _RowAndColumnPageState extends State<RowAndColumnPage> {
           ),
         ),
         Card(
-          elevation: 4.0,
-          margin: const EdgeInsets.all(16.0),
-          child: IntrinsicWidth(child: Column(
-            crossAxisAlignment: CrossAxisAlignment.stretch,
-            mainAxisAlignment: MainAxisAlignment.start,
-            mainAxisSize: MainAxisSize.max,
-            children: <Widget>[
-              RaisedButton(
-                onPressed: () {},
-                child: Text('Short'),
+            elevation: 4.0,
+            margin: const EdgeInsets.all(16.0),
+            child: IntrinsicWidth(
+              child: Column(
+                crossAxisAlignment: CrossAxisAlignment.stretch,
+                mainAxisAlignment: MainAxisAlignment.start,
+                mainAxisSize: MainAxisSize.max,
+                children: <Widget>[
+                  RaisedButton(
+                    onPressed: () {},
+                    child: Text('Short'),
+                  ),
+                  SizedBox(
+                    height: 16.0,
+                  ),
+                  RaisedButton(
+                    onPressed: () {},
+                    child: Text('A bit Longer'),
+                  ),
+                  SizedBox(
+                    height: 16.0,
+                  ),
+                  RaisedButton(
+                    onPressed: () {},
+                    child: Text('The Longest text button'),
+                  ),
+                ],
               ),
-              SizedBox(height: 16.0,),
-              RaisedButton(
-                onPressed: () {},
-                child: Text('A bit Longer'),
-              ),
-              SizedBox(height: 16.0,),
-              RaisedButton(
-                onPressed: () {},
-                child: Text('The Longest text button'),
-              ),
-            ],
-          ),
-        )
-        )
+            ))
       ]),
     );
   }
