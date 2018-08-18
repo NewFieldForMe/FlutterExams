@@ -1,4 +1,4 @@
-package com.example.flutterexams
+package com.yamadaryo.flutterexamples
 
 import android.os.Bundle
 
