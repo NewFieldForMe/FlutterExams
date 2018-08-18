@@ -10,6 +10,7 @@ import 'package:flutter_exams/view/SliverLayoutPage.dart';
 import 'package:flutter_exams/view/RowAndColumnPage.dart';
 import 'package:flutter_exams/view/NestedScrollViewPage.dart';
 import 'package:flutter_exams/presenter/ExampleListPagePresenter.dart';
+import 'package:firebase_messaging/firebase_messaging.dart';
 
 class ExampleListPage extends StatefulWidget {
   final String title;
@@ -21,6 +22,8 @@ class ExampleListPage extends StatefulWidget {
 }
 
 class _ExampleListPageState extends State<ExampleListPage> {
+  final FirebaseMessaging _firebaseMessaging = new FirebaseMessaging();
+
   @override
   Widget build(BuildContext context) {
     return new Scaffold(
@@ -87,5 +90,63 @@ class _ExampleListPageState extends State<ExampleListPage> {
         }));
       },
     ));
+  }
+
+  void _buildDialog(BuildContext context, String message) {
+    showDialog(
+      context: context,
+      barrierDismissible: false,
+      builder: (BuildContext context) {
+        return new AlertDialog(
+          content: new Text("Message: $message"),
+          actions: <Widget>[
+            new FlatButton(
+              child: const Text('CLOSE'),
+              onPressed: () {
+                Navigator.pop(context, false);
+              },
+            ),
+            new FlatButton(
+              child: const Text('SHOW'),
+              onPressed: () {
+                Navigator.pop(context, true);
+              },
+            ),
+          ],
+        );
+      }
+    );
+  }
+
+  @override
+  void initState() {
+    super.initState();
+    _firebaseMessaging.configure(
+      onMessage: (Map<String, dynamic> message) async {
+        print("onMessage: $message");
+        _buildDialog(context, "onMessage");
+        // _showItemDialog(message);
+      },
+      onLaunch: (Map<String, dynamic> message) async {
+        print("onLaunch: $message");
+        _buildDialog(context, "onLaunch");
+        // _navigateToItemDetail(message);
+      },
+      onResume: (Map<String, dynamic> message) async {
+        print("onResume: $message");
+        _buildDialog(context, "onResume");
+        // _navigateToItemDetail(message);
+      },
+    );
+    _firebaseMessaging.requestNotificationPermissions(
+        const IosNotificationSettings(sound: true, badge: true, alert: true));
+    _firebaseMessaging.onIosSettingsRegistered
+        .listen((IosNotificationSettings settings) {
+      print("Settings registered: $settings");
+    });
+    _firebaseMessaging.getToken().then((String token) {
+      assert(token != null);
+      print("Push Messaging token: $token");
+    });
   }
 }
