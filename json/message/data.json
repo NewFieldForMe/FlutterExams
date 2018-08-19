@@ -1,0 +1,10 @@
+{
+    "to": "/topics/all",
+    "priority": "high",
+    "data" : {
+        "id" : "適当な値",
+        "message" : "何でもOK",
+        "metadata" : "自由に設定可能",
+        "click_action": "FLUTTER_NOTIFICATION_CLICK"
+    }
+}

@@ -1,0 +1,8 @@
+{
+    "to": "/topics/all",
+    "priority": "high",
+    "notification" : {
+        "title" : "テスト Title",
+        "body" : "テスト Body"
+    }
+}

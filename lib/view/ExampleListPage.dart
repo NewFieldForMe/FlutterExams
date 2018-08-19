@@ -121,6 +121,10 @@ class _ExampleListPageState extends State<ExampleListPage> {
   @override
   void initState() {
     super.initState();
+    _setupFirebaseMessaging();
+  }
+
+  void _setupFirebaseMessaging() {
     _firebaseMessaging.configure(
       onMessage: (Map<String, dynamic> message) async {
         print("onMessage: $message");
@@ -139,7 +143,8 @@ class _ExampleListPageState extends State<ExampleListPage> {
       },
     );
     _firebaseMessaging.requestNotificationPermissions(
-        const IosNotificationSettings(sound: true, badge: true, alert: true));
+      const IosNotificationSettings(sound: true, badge: true, alert: true)
+    );
     _firebaseMessaging.onIosSettingsRegistered
         .listen((IosNotificationSettings settings) {
       print("Settings registered: $settings");
@@ -148,5 +153,6 @@ class _ExampleListPageState extends State<ExampleListPage> {
       assert(token != null);
       print("Push Messaging token: $token");
     });
+    _firebaseMessaging.subscribeToTopic("/topics/all");
   }
 }
