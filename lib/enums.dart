@@ -9,5 +9,6 @@ enum ExampleEnum {
   stack,
   sliver,
   rowAndColoumn,
-  nestedScrollView
+  nestedScrollView,
+  firebaseChat,
 }
