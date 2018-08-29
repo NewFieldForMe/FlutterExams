@@ -1,4 +1,5 @@
 import 'dart:async';
+import 'dart:io';
 
 import 'package:flutter/material.dart';
 import 'package:firebase_database/firebase_database.dart';
@@ -37,10 +38,99 @@ class _FirebaseChatPageState extends State<FirebaseChatPage> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: AppBar(title: new Text("Firebase Chat")),
+      appBar: AppBar(
+        title: new Text("Firebase Chat"),
+        actions: _buildAppBarActionButton()
+      ),
       body: Container(
           child: _user == null ? _buildGoogleSignInButton() : _buildChatArea()),
     );
+  }
+
+  List<Widget> _buildAppBarActionButton() {
+    return _user == null ? null :
+      <Widget>[
+        MaterialButton(
+          onPressed: () {
+            StatelessWidget dialog;
+            dialog = Platform.isIOS ? 
+            _buildSignOutDialogiOS() 
+            : _buildSignOutDialogAndroid();
+
+            showDialog(
+              context: context,
+              builder: (context) {
+                return dialog;
+              }
+            );
+          },
+          child: Text(
+            "SignOut",
+            style: TextStyle(
+              fontSize: 14.0,
+              color: Colors.white
+            ),
+          ),
+        )
+      ];
+  }
+
+  Widget _buildSignOutDialogAndroid() {
+    return AlertDialog(
+      title: Text("Confirm"),
+      content: Text("Are you sure you want to Sign out?"),
+      actions: <Widget>[
+        FlatButton(
+          child: const Text("Cancel"),
+          onPressed: () {
+            Navigator.pop(context);
+          },
+        ),
+        FlatButton(
+          child: const Text("SignOut"),
+          onPressed: () { 
+            Navigator.pop(context);
+            _signOut(); 
+          },
+        )
+      ]
+    );
+  }
+
+  Widget _buildSignOutDialogiOS() {
+    return CupertinoAlertDialog(
+      title: Text("Confirm"),
+      content: Text("Are you sure you want to Sign out?"),
+      actions: <Widget>[
+        CupertinoDialogAction(
+          child: const Text("Cancel"),
+          isDefaultAction: true,
+          onPressed: () {
+            Navigator.pop(context);
+          },
+        ),
+        CupertinoDialogAction(
+          child: const Text("SignOut"),
+          isDestructiveAction: true,
+          onPressed: () { 
+            Navigator.pop(context);
+            _signOut(); 
+          },
+        )
+      ]
+    );
+  }
+
+  void _signOut() {
+    _auth.signOut()
+      .then((_) {
+        setState(() {
+          _user = null;
+        });
+      })
+      .catchError((error) {
+        print(error);
+      });
   }
 
   /// GoogleLoginを実行するボタンのWidgetを作成する
