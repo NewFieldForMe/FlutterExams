@@ -11,4 +11,5 @@ enum ExampleEnum {
   rowAndColoumn,
   nestedScrollView,
   firebaseChat,
+  cupertinoStyle,
 }

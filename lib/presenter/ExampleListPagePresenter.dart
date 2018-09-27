@@ -19,6 +19,7 @@ class ExampleListPagePresenter {
       Example(title: 'Row and Columns', exampleType: ExampleEnum.rowAndColoumn),
       Example(title: 'Nested Scroll View', exampleType: ExampleEnum.nestedScrollView),
       Example(title: 'Firebase Realtime Database Chat', exampleType: ExampleEnum.firebaseChat),
+      Example(title: 'Cupertino Style', exampleType: ExampleEnum.cupertinoStyle),
     ];
   }
 }
