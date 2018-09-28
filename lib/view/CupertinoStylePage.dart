@@ -39,45 +39,48 @@ class _CupertinoStylePageState extends State<CupertinoStylePage> {
       },
       onValueChanged: (value) {
         if (value == "1") {
-          showCupertinoModalPopup(
-            context: context,
-            builder: (BuildContext context) {
-              return _buildCupertinoActionSheet(context);
-            }
-          );
+          _showCupertinoActionSheet(context);
         }
         if (value == "2") {
-          showModalBottomSheet(
-            context: context,
-            builder: (BuildContext context) {
-              return CupertinoPicker(
-                onSelectedItemChanged: (value) {},
-                itemExtent: 30.0,
-                children: <Widget>[
-                  Center(child: Text("item 1")),
-                  Center(child: Text("item 2")),
-                  Center(child: Text("item 3")),
-                  Center(child: Text("item 4")),
-                  Center(child: Text("item 5")),
-                ],
-              );
-            }
-          );
+          _showCupertinoPicker(context);
         }
     },);
   }
 
-  Widget _buildCupertinoActionSheet(BuildContext context) {
-    return CupertinoActionSheet(
-      title: Text("title"),
-      message: Text("message"),
-      actions: <Widget>[
-        CupertinoActionSheetAction(child: Text("none"), onPressed: () { Navigator.pop(context); },),
-        CupertinoActionSheetAction(child: Text("default action"), onPressed: () { Navigator.pop(context); }, isDefaultAction: true,),
-        CupertinoActionSheetAction(child: Text("destructive action"), onPressed: () { Navigator.pop(context); }, isDestructiveAction: true,),
-      ],
-      cancelButton: CupertinoActionSheetAction(child: Text("Cancel"), onPressed: () { Navigator.pop(context); },),
+  _showCupertinoActionSheet(BuildContext context) {
+    showCupertinoModalPopup(
+      context: context,
+      builder: (BuildContext context) {
+        return CupertinoActionSheet(
+          title: Text("title"),
+          message: Text("message"),
+          actions: <Widget>[
+            CupertinoActionSheetAction(child: Text("none"), onPressed: () { Navigator.pop(context); },),
+            CupertinoActionSheetAction(child: Text("default action"), onPressed: () { Navigator.pop(context); }, isDefaultAction: true,),
+            CupertinoActionSheetAction(child: Text("destructive action"), onPressed: () { Navigator.pop(context); }, isDestructiveAction: true,),
+          ],
+          cancelButton: CupertinoActionSheetAction(child: Text("Cancel"), onPressed: () { Navigator.pop(context); },),
+        );
+      }
     );
+  }
+
+  _showCupertinoPicker(BuildContext context) {
+    showModalBottomSheet(
+      context: context,
+      builder: (BuildContext context) {
+        return CupertinoPicker(
+          onSelectedItemChanged: (value) {},
+          itemExtent: 30.0,
+          children: <Widget>[
+            Center(child: Text("item 1")),
+            Center(child: Text("item 2")),
+            Center(child: Text("item 3")),
+            Center(child: Text("item 4")),
+            Center(child: Text("item 5")),
+          ],
+        );
+      });
   }
 
   Widget _buildCupertinoTimerPicker() {
