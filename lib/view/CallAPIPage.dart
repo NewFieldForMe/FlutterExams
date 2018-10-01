@@ -57,16 +57,72 @@ class _CallAPIPageState extends State<CallAPIPage> {
 
   Widget _buildRepositoryList() {
     return ListView.builder(
-      itemExtent: 160.0,
       itemBuilder: (BuildContext context, int index) {
         final repository = _repositories[index];
-        return Card(
-          margin: EdgeInsets.fromLTRB(16.0, 0.0, 16.0, 16.0),
-          child: Text(repository.fullName.toString())
-        ,);
+        return _buildCard(repository);
       },
       itemCount: _repositories.length,
     );
+  }
+
+  Widget _buildCard(GithubRepository repository) {
+    return Card(
+      margin: EdgeInsets.fromLTRB(16.0, 0.0, 16.0, 16.0),
+      child: Column(
+        crossAxisAlignment: CrossAxisAlignment.start,
+        children: <Widget>[
+          Padding(
+            padding: EdgeInsets.all(12.0), 
+            child: Text(
+              repository.fullName,
+              style: TextStyle(
+                fontWeight: FontWeight.bold, fontSize: 16.0
+              ),
+            ),
+          ),
+          repository.language != null ? Padding(
+            padding: EdgeInsets.fromLTRB(12.0, 0.0, 12.0, 12.0),
+            child: Text(
+              repository.language,
+              style: TextStyle(
+                fontWeight: FontWeight.bold, fontSize: 12.0
+              ),
+            ),
+          ) : Container(),
+          repository.description != null ? Padding(
+            padding: EdgeInsets.fromLTRB(12.0, 0.0, 12.0, 12.0),
+            child: Text(
+              repository.description,
+              style: TextStyle(
+                fontWeight: FontWeight.w200,
+                color: Colors.grey
+              )
+            ),
+          ) : Container(),
+          Row(
+            mainAxisAlignment: MainAxisAlignment.end,
+            children: <Widget>[
+              Icon(Icons.star),
+              SizedBox(
+                width: 50.0,
+                child: Text(repository.stargazersCount.toString()),
+              ),
+              Icon(Icons.remove_red_eye),
+              SizedBox(
+                width: 50.0,
+                child: Text(repository.watchersCount.toString()),
+              ),
+              Text("Fork:"),
+              SizedBox(
+                width: 50.0,
+                child: Text(repository.forksCount.toString()),
+              ),
+            ],
+          ),
+          SizedBox(height: 16.0,)
+        ],
+      )
+    ,);
   }
 
   Future<List<GithubRepository>> _searchRepositories(String searchWord) async {
