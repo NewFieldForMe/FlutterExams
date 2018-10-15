@@ -13,4 +13,5 @@ enum ExampleEnum {
   firebaseChat,
   cupertinoStyle,
   callApi,
+  callApiBLoC,
 }

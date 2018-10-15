@@ -6,6 +6,7 @@ class ExampleListPagePresenter {
   ExampleListPagePresenter() {
     this.examples = <Example>[
       Example(title: 'Call API', exampleType: ExampleEnum.callApi),
+      Example(title: 'Call API BLoC', exampleType: ExampleEnum.callApiBLoC),
       Example(title: 'Card Layout', exampleType: ExampleEnum.cardLayout),
       Example(title: 'Scroll View Layout', exampleType: ExampleEnum.scrollView),
       Example(title: 'Method Channel', exampleType: ExampleEnum.methodChannel),

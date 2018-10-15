@@ -16,16 +16,6 @@ class GithubRepository {
   /// Count of forks repository.
   final int forksCount;
 
-  GithubRepository({
-    @required this.fullName,
-    @required this.description,
-    @required this.language,
-    @required this.htmlUrl,
-    @required this.stargazersCount,
-    @required this.watchersCount,
-    @required this.forksCount,
-  });
-
   GithubRepository.fromJson(Map<String, dynamic> json) 
     : fullName = json['full_name'],
     description = json['description'],
