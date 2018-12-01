@@ -1,5 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_exams/enums.dart';
+import 'package:flutter_exams/view/CallAPIPage.dart';
+import 'package:flutter_exams/view/CallAPIBLoCPage.dart';
 import 'package:flutter_exams/view/CupertinoStylePage.dart';
 import 'package:flutter_exams/view/CardLayoutPage.dart';
 import 'package:flutter_exams/view/ScrollViewPage.dart';
@@ -59,6 +61,12 @@ class _ExampleListPageState extends State<ExampleListPage> {
         Navigator.push(context, MaterialPageRoute(builder: (context) {
           print(widget.presenter.examples[index].exampleType);
           switch (widget.presenter.examples[index].exampleType) {
+            case ExampleEnum.callApiBLoC:
+              return CallAPIBLoCPage(bloc: SearchGithubRepositoryBloc());
+              break;
+            case ExampleEnum.callApi:
+              return CallAPIPage();
+              break;
             case ExampleEnum.cardLayout:
               return CardLayoutPage();
               break;

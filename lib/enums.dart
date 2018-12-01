@@ -12,4 +12,6 @@ enum ExampleEnum {
   nestedScrollView,
   firebaseChat,
   cupertinoStyle,
+  callApi,
+  callApiBLoC,
 }
