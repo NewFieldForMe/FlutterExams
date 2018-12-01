@@ -7,12 +7,14 @@
         <option name="externalProjectPath" value="$PROJECT_DIR$" />
         <option name="modules">
           <set>
-            <option value="$USER_HOME$/classmethod/study/flutter/.pub-cache/hosted/pub.dartlang.org/firebase_core-0.2.5/android" />
-            <option value="$USER_HOME$/classmethod/study/flutter/.pub-cache/hosted/pub.dartlang.org/firebase_database-1.0.4/android" />
-            <option value="$USER_HOME$/classmethod/study/flutter/.pub-cache/hosted/pub.dartlang.org/firebase_messaging-1.0.4/android" />
-            <option value="$USER_HOME$/classmethod/study/flutter/.pub-cache/hosted/pub.dartlang.org/map_view-0.0.14/android" />
             <option value="$PROJECT_DIR$" />
             <option value="$PROJECT_DIR$/app" />
+            <option value="$PROJECT_DIR$/../../lib/flutter/.pub-cache/hosted/pub.dartlang.org/firebase_auth-0.5.20/android" />
+            <option value="$PROJECT_DIR$/../../lib/flutter/.pub-cache/hosted/pub.dartlang.org/firebase_core-0.2.5/android" />
+            <option value="$PROJECT_DIR$/../../lib/flutter/.pub-cache/hosted/pub.dartlang.org/firebase_database-1.0.4/android" />
+            <option value="$PROJECT_DIR$/../../lib/flutter/.pub-cache/hosted/pub.dartlang.org/firebase_messaging-1.0.5/android" />
+            <option value="$PROJECT_DIR$/../../lib/flutter/.pub-cache/hosted/pub.dartlang.org/google_sign_in-3.0.5/android" />
+            <option value="$PROJECT_DIR$/../../lib/flutter/.pub-cache/hosted/pub.dartlang.org/map_view-0.0.14/android" />
           </set>
         </option>
         <option name="resolveModulePerSourceSet" value="false" />

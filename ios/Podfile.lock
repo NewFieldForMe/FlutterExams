@@ -1,18 +1,18 @@
 PODS:
-  - Firebase/Auth (5.4.1):
+  - Firebase/Auth (5.6.0):
     - Firebase/CoreOnly
-    - FirebaseAuth (= 5.0.2)
-  - Firebase/Core (5.4.1):
+    - FirebaseAuth (= 5.0.3)
+  - Firebase/Core (5.6.0):
     - Firebase/CoreOnly
-    - FirebaseAnalytics (= 5.0.1)
-  - Firebase/CoreOnly (5.4.1):
-    - FirebaseCore (= 5.0.6)
-  - Firebase/Database (5.4.1):
+    - FirebaseAnalytics (= 5.1.1)
+  - Firebase/CoreOnly (5.6.0):
+    - FirebaseCore (= 5.1.1)
+  - Firebase/Database (5.6.0):
     - Firebase/CoreOnly
     - FirebaseDatabase (= 5.0.2)
-  - Firebase/Messaging (5.4.1):
+  - Firebase/Messaging (5.6.0):
     - Firebase/CoreOnly
-    - FirebaseMessaging (= 3.0.3)
+    - FirebaseMessaging (= 3.1.0)
   - firebase_auth (0.0.1):
     - Firebase/Auth
     - Firebase/Core
@@ -27,30 +27,44 @@ PODS:
     - Firebase/Core
     - Firebase/Messaging
     - Flutter
-  - FirebaseAnalytics (5.0.1):
-    - FirebaseCore (~> 5.0)
-    - FirebaseInstanceID (~> 3.0)
-    - "GoogleToolboxForMac/NSData+zlib (~> 2.1)"
+  - FirebaseAnalytics (5.1.1):
+    - FirebaseCore (~> 5.1)
+    - FirebaseInstanceID (~> 3.2)
+    - GoogleAppMeasurement (~> 5.1)
+    - GoogleUtilities/AppDelegateSwizzler (~> 5.2.0)
+    - GoogleUtilities/MethodSwizzler (~> 5.2.0)
+    - GoogleUtilities/Network (~> 5.2)
+    - "GoogleUtilities/NSData+zlib (~> 5.2)"
     - nanopb (~> 0.3)
-  - FirebaseAuth (5.0.2):
+  - FirebaseAuth (5.0.3):
+    - FirebaseAuthInterop (~> 1.0)
     - FirebaseCore (~> 5.0)
+    - GoogleUtilities/Environment (~> 5.2)
     - GTMSessionFetcher/Core (~> 1.1)
-  - FirebaseCore (5.0.6):
-    - "GoogleToolboxForMac/NSData+zlib (~> 2.1)"
+  - FirebaseAuthInterop (1.0.0)
+  - FirebaseCore (5.1.1):
+    - GoogleUtilities/Logger (~> 5.2)
   - FirebaseDatabase (5.0.2):
     - FirebaseCore (~> 5.0)
     - leveldb-library (~> 1.18)
-  - FirebaseInstanceID (3.1.1):
-    - FirebaseCore (~> 5.0)
-  - FirebaseMessaging (3.0.3):
+  - FirebaseInstanceID (3.2.1):
+    - FirebaseCore (~> 5.1)
+    - GoogleUtilities/Environment (~> 5.2)
+  - FirebaseMessaging (3.1.0):
     - FirebaseCore (~> 5.0)
     - FirebaseInstanceID (~> 3.0)
-    - GoogleToolboxForMac/Logger (~> 2.1)
+    - GoogleUtilities/Reachability (~> 5.2)
     - Protobuf (~> 3.1)
   - Flutter (1.0.0)
   - google_sign_in (0.0.1):
     - Flutter
     - GoogleSignIn (~> 4.0)
+  - GoogleAppMeasurement (5.1.1):
+    - GoogleUtilities/AppDelegateSwizzler (~> 5.2.0)
+    - GoogleUtilities/MethodSwizzler (~> 5.2.0)
+    - GoogleUtilities/Network (~> 5.2)
+    - "GoogleUtilities/NSData+zlib (~> 5.2)"
+    - nanopb (~> 0.3)
   - GoogleMaps (2.7.0):
     - GoogleMaps/Maps (= 2.7.0)
   - GoogleMaps/Base (2.7.0)
@@ -64,15 +78,27 @@ PODS:
   - GoogleToolboxForMac/DebugUtils (2.1.4):
     - GoogleToolboxForMac/Defines (= 2.1.4)
   - GoogleToolboxForMac/Defines (2.1.4)
-  - GoogleToolboxForMac/Logger (2.1.4):
-    - GoogleToolboxForMac/Defines (= 2.1.4)
-  - "GoogleToolboxForMac/NSData+zlib (2.1.4)":
-    - GoogleToolboxForMac/Defines (= 2.1.4)
   - "GoogleToolboxForMac/NSDictionary+URLArguments (2.1.4)":
     - GoogleToolboxForMac/DebugUtils (= 2.1.4)
     - GoogleToolboxForMac/Defines (= 2.1.4)
     - "GoogleToolboxForMac/NSString+URLArguments (= 2.1.4)"
   - "GoogleToolboxForMac/NSString+URLArguments (2.1.4)"
+  - GoogleUtilities/AppDelegateSwizzler (5.2.2):
+    - GoogleUtilities/Environment
+    - GoogleUtilities/Logger
+    - GoogleUtilities/Network
+  - GoogleUtilities/Environment (5.2.2)
+  - GoogleUtilities/Logger (5.2.2):
+    - GoogleUtilities/Environment
+  - GoogleUtilities/MethodSwizzler (5.2.2):
+    - GoogleUtilities/Logger
+  - GoogleUtilities/Network (5.2.2):
+    - GoogleUtilities/Logger
+    - "GoogleUtilities/NSData+zlib"
+    - GoogleUtilities/Reachability
+  - "GoogleUtilities/NSData+zlib (5.2.2)"
+  - GoogleUtilities/Reachability (5.2.2):
+    - GoogleUtilities/Logger
   - GTMOAuth2 (1.1.6):
     - GTMSessionFetcher (~> 1.1)
   - GTMSessionFetcher (1.2.0):
@@ -89,7 +115,7 @@ PODS:
     - nanopb/encode (= 0.3.8)
   - nanopb/decode (0.3.8)
   - nanopb/encode (0.3.8)
-  - Protobuf (3.6.0)
+  - Protobuf (3.6.1)
 
 DEPENDENCIES:
   - firebase_auth (from `.symlinks/plugins/firebase_auth/ios`)
@@ -105,13 +131,16 @@ SPEC REPOS:
     - Firebase
     - FirebaseAnalytics
     - FirebaseAuth
+    - FirebaseAuthInterop
     - FirebaseCore
     - FirebaseDatabase
     - FirebaseInstanceID
     - FirebaseMessaging
+    - GoogleAppMeasurement
     - GoogleMaps
     - GoogleSignIn
     - GoogleToolboxForMac
+    - GoogleUtilities
     - GTMOAuth2
     - GTMSessionFetcher
     - leveldb-library
@@ -135,28 +164,31 @@ EXTERNAL SOURCES:
     :path: ".symlinks/plugins/map_view/ios"
 
 SPEC CHECKSUMS:
-  Firebase: 355bd535bfdacaa82a7fe8d9784115edefd6fc03
+  Firebase: 75ea9e232eefa158c1049028030b8f661a2ccb62
   firebase_auth: 27a5a77a032d557c18f8e223aaf8ec1368f6cdbc
   firebase_core: c96aa8b2fcf7f5167d32f22034f502f9304952b8
   firebase_database: dd62ab9f71967c9011ce2fd03a89e762dcc364df
   firebase_messaging: a5f5d4a9491b660f33a1f94bd0596558f820bad1
-  FirebaseAnalytics: b3628aea54c50464c32c393fb2ea032566e7ecc2
-  FirebaseAuth: 096e457cdd4274412a66c4a35874787e411f5a03
-  FirebaseCore: 4c28e3b9708ba48a765e76515f913a71596eb5dd
+  FirebaseAnalytics: 993577e91157feb40945abedd6ab346d8a4b6ac8
+  FirebaseAuth: 657a25e4be044d2d333663ebf515a861c5a59cd7
+  FirebaseAuthInterop: 0ffa57668be100582bb7643d4fcb7615496c41fc
+  FirebaseCore: cb9ee75e0894def766167c95a4d5a14b1c138269
   FirebaseDatabase: 27be5ac5bc75e0b17537b2bbfada8258addcc8cd
-  FirebaseInstanceID: f3f0657372592ecdfdfe2cac604a5a75758376a6
-  FirebaseMessaging: f43eb0c0e1da096e659de6f713038e74862a62cd
+  FirebaseInstanceID: ea5af6920d0a4a29b40459d055bebe4a6c1333c4
+  FirebaseMessaging: f67b3719f520ee200da0e20ce577fe2bce0c01d0
   Flutter: 9d0fac939486c9aba2809b7982dfdbb47a7b0296
   google_sign_in: cbeb57b96679823d14df6b2240b629b983a42d79
+  GoogleAppMeasurement: f7507b39b70ad0bd80b3d81518b2f43868974307
   GoogleMaps: f79af95cb24d869457b1f961c93d3ce8b2f3b848
   GoogleSignIn: 591e46382014e591269f862ba6e7bc0fbd793532
   GoogleToolboxForMac: 91c824d21e85b31c2aae9bb011c5027c9b4e738f
+  GoogleUtilities: 06b66f9567769a7958db20a92f0128b2843e49d5
   GTMOAuth2: c77fe325e4acd453837e72d91e3b5f13116857b2
   GTMSessionFetcher: 0c4baf0a73acd0041bf9f71ea018deedab5ea84e
   leveldb-library: 08cba283675b7ed2d99629a4bc5fd052cd2bb6a5
   map_view: 4a71319ae78b6fb4c20813224b8c6e256703ff9b
   nanopb: 5601e6bca2dbf1ed831b519092ec110f66982ca3
-  Protobuf: 0fc0ad8bec688b2a3017a139953e01374fedbd5f
+  Protobuf: 1eb9700044745f00181c136ef21b8ff3ad5a0fd5
 
 PODFILE CHECKSUM: 4c628988d1648b441c9bf15e354cde21c27109a4
 
